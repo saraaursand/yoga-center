@@ -1,5 +1,5 @@
 <template>
-  <div class="page-wrapper">
+  <div class="page">
     <NuxtRouteAnnouncer />
     <NuxtPage />
   </div>
@@ -16,4 +16,6 @@ import Footer from '~/components/Footer.vue'
   flex-direction: column;
   min-height: 100vh;
 }
+
 </style>
+

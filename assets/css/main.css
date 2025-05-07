@@ -21,3 +21,9 @@ footer {
     text-align: right;
     line-height: 0.5;   
   }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
