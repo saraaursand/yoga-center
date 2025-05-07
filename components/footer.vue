@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <footer class= "footer">
     <div>
       <img src="/logo.png" alt="Yoga logo" />
     </div>

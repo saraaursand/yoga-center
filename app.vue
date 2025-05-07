@@ -2,8 +2,8 @@
   <div class="page-wrapper">
     <NuxtRouteAnnouncer />
     <NuxtPage />
-    <Footer />
   </div>
+  <Footer />
 </template>
 
 <script setup>
