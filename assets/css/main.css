@@ -1,0 +1,25 @@
+main.css
+
+footer {
+    background-color: #97AB88;
+    padding: 0.05rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 14px;
+    color: black;
+    gap: 2rem;
+  }
+  
+  footer img {
+    width: 64px;      
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  footer .address {
+    margin-left: auto;
+    text-align: right;
+    line-height: 0.5;   
+  }
