@@ -1,10 +1,29 @@
+:root {
+  /* Figma Colors */
+  --C01: #72936E;
+  --C02: #84A181;
+  --C03: #97AB88;
+  --C04: #B9C9B7;
+  --C05: #FFFFFF; 
+  --C06: #000000;
+  
+  /* Figma Font Sizes */
+  --HEADER: 64px;
+  --SUBHEADER: 36px;
+  --MENU: 24px;
+  --DESCRIPTION: 24px;
+
+  /* Figma Fonts */
+  --FONT: 'Jacques Francois', serif;
+}
+
 footer {
-    background-color: #97AB88;
+    background-color: var(--C03);
     padding: 0.05rem 2rem;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    font-size: 14px;
+    font-size: var(--MENU);
     color: black;
     gap: 2rem;
   }
