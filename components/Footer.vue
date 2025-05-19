@@ -1,7 +1,7 @@
 <template>
-  <footer class= "footer">
+  <footer class="footer">
     <div>
-      <img src="/logo.png" alt="Yoga logo" />
+      <img :src="logo" alt="Yoga logo" />
     </div>
     <div class="address">
       <p><strong>Address:</strong></p>
@@ -12,3 +12,32 @@
   </footer>
 </template>
 
+<script setup>
+import logo from '~/assets/images/logo.png'
+</script>
+
+<style scoped>
+.footer {
+  background-color: var(--C03);
+  padding: 0.05rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: var(--MENU);
+  color: var(--C06);
+  gap: 2rem;
+}
+
+.footer img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.address {
+  margin-left: auto;
+  text-align: right;
+  line-height: 0.5;
+}
+</style>
