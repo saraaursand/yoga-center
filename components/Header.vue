@@ -1,17 +1,22 @@
-
 <template>
     <header class="header">
       <div>
-        <img src="/logo.png" alt="Yoga logo" />
+        <img :src="logo" alt="Yoga logo" />
       </div>
       <nav class="menu">
         <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/classes">Classes</a>
-        <a href="/contact">Contact</a>
+        <a href="/highlights">Highlights</a>
+        <a href="/activities">Activities</a>
+        <a href="/teachers">Our teachers</a>
+        <a href="/about">About us</a>
+        <a href="/contact">Contact us</a>
       </nav>
     </header>
   </template>
+  
+  <script setup>
+  import logo from '~/assets/images/logo.png'
+  </script>
   
   <style scoped>
   .header {
