@@ -1,7 +1,9 @@
 <template>
     <div class="layout">
       <Header />
-      <NuxtPage />
+      <main class="content">
+        <NuxtPage />
+      </main>
       <Footer />
     </div>
   </template>
@@ -11,11 +13,15 @@
   import Footer from '~/components/Footer.vue'
   </script>
   
-  <style>
+  <style scoped>
   .layout {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+  }
+  
+  .content {
+    flex: 1;
   }
   </style>
   
