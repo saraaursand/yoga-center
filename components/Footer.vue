@@ -1,8 +1,8 @@
 <template>
   <footer class="footer">
-    <div>
+    <NuxtLink to="/" class="logo">
       <img :src="logo" alt="Yoga logo" />
-    </div>
+    </NuxtLink>
     <div class="address">
       <p><strong>Address:</strong></p>
       <p>Via Andrea Maria Ampère, 2</p>
