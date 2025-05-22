@@ -16,6 +16,9 @@
   /* Figma Fonts */
   --FONT: Georgia, serif;
 
+  /* Standard Gap between edges and widgets */
+  --widget-gap: 2rem;
+
 }
 
 body {
