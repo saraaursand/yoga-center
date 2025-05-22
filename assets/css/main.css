@@ -18,12 +18,12 @@
 }
 
 footer {
-    background-color: var(--C05);
+    background-color: var(--C03);
     padding: 0.05rem 2rem;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    font-size: var(--HEADER);
+    font-size: var(--MENU);
     color: var(--C06);
     gap: 2rem;
   }
