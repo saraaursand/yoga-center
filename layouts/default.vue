@@ -3,13 +3,13 @@
       <Header />
       <main class="content">
         <NuxtPage />
-        <WhoCard
-          imgSrc="images/avaRobinson.png"
-          name="Kim Nelson"
+        <WhenCard
+          date="Saturday November 25th"
+          time="10:00 AM - 4:00 PM"
         />
-        <WhoCard
-          imgSrc="images/felipeGonzales.png"
-          name="Shatmi Mandir"
+        <WhenCard
+          date="Every Monday"
+          time="10:00 AM - 4:00 PM"
         />
       </main>
       <Footer />
@@ -21,6 +21,7 @@
   import IntroCard from '~/components/IntroCard.vue';
   import DescriptionCard from '~/components/DescriptionCard.vue';
   import WhoCard from '~/components/WhoCard.vue';
+  import WhenCard from '~/components/WhenCard.vue';
   import Footer from '~/components/Footer.vue'
   
   </script>
