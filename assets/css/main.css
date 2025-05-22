@@ -2,7 +2,7 @@
   /* Figma Colors */
   --C01: #72936E;
   --C02: #84A181;
-  --C03: #97AB88;
+  --C03: #96AE93;
   --C04: #B9C9B7;
   --C05: #FFFFFF; 
   --C06: #000000;
@@ -14,35 +14,16 @@
   --DESCRIPTION: 24px;
 
   /* Figma Fonts */
-  --FONT: 'Jacques Francois', serif;
+  --FONT: Georgia, serif;
+
 }
 
-footer {
-    background-color: var(--C03);
-    padding: 0.05rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    font-size: var(--MENU);
-    color: var(--C06);
-    gap: 2rem;
-  }
-  
-  footer img {
-    width: 64px;      
-    height: 64px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  footer .address {
-    margin-left: auto;
-    text-align: right;
-    line-height: 0.5;   
-  }
+body {
+  background-color: var(--C04);
+}
 
-  html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
