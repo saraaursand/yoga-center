@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import logo from '~/assets/images/logo.png'
+import logo from '/images/logo.png'
 </script>
 
 <style scoped>
