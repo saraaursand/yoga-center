@@ -3,6 +3,14 @@
       <Header />
       <main class="content">
         <NuxtPage />
+        <WhoCard
+          imgSrc="images/avaRobinson.png"
+          name="Kim Nelson"
+        />
+        <WhoCard
+          imgSrc="images/felipeGonzales.png"
+          name="Shatmi Mandir"
+        />
       </main>
       <Footer />
     </div>
@@ -12,6 +20,7 @@
   import Header from '~/components/Header.vue'
   import IntroCard from '~/components/IntroCard.vue';
   import DescriptionCard from '~/components/DescriptionCard.vue';
+  import WhoCard from '~/components/WhoCard.vue';
   import Footer from '~/components/Footer.vue'
   
   </script>
