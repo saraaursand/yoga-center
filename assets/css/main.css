@@ -1,12 +1,12 @@
 :root {
   /* Figma Colors */
-  --C01: #72936E;
-  --C02: #84A181;
-  --C03: #96AE93;
-  --C04: #B9C9B7;
-  --C05: #FFFFFF; 
+  --C01: #72936e;
+  --C02: #84a181;
+  --C03: #96ae93;
+  --C04: #b9c9b7;
+  --C05: #ffffff;
   --C06: #000000;
-  
+
   /* Figma Font Sizes */
   --HEADER: 64px;
   --SUBHEADER: 36px;
@@ -18,15 +18,19 @@
 
   /* Standard Gap between edges and widgets */
   --widget-gap: 2rem;
-
 }
 
 body {
   background-color: var(--C04);
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+h1 {
+  text-align: center;
 }
