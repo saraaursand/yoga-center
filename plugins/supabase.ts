@@ -2,6 +2,7 @@ import { createClient } from "@supabase/supabase-js";
 
 export default defineNuxtPlugin((nuxtApp) => {
   const config = useRuntimeConfig();
+  console.log("Supabase config in plugin:", config.public);
   const supabase = createClient(
     config.public.supabaseUrl,
     config.public.supabaseAnonKey
