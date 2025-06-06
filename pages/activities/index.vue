@@ -61,4 +61,22 @@
   font-size: var(--SUBHEADER);
   cursor: pointer;
 }
+
+@media (max-width: 600px) {
+  .activity-buttons-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .activity-image-btn {
+    width: 100%;
+    max-width: 95vw;
+    aspect-ratio: 16 / 10;
+  }
+  .activity-btn {
+    font-size: 20px;
+    width: 80vw;
+    max-width: 300px;
+  }
+}
 </style>
