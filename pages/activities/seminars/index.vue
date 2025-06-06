@@ -3,7 +3,7 @@
     <h1>OUR SEMINARS</h1>
     <div v-for="(seminar, idx) in seminars" :key="seminar.id">
       <NuxtLink
-        :to="`/activities/classes/${seminar.name}`"
+        :to="`/activities/seminars/${seminar.name}`"
         style="text-decoration: none"
       >
         <IntroCard
