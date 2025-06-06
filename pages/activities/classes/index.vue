@@ -1,15 +1,15 @@
 <template>
   <div>
     <h1>OUR CLASSES</h1>
-    <div v-for="(activity, idx) in activities" :key="activity.id">
+    <div v-for="(classItem, idx) in classes" :key="classItem.id">
       <NuxtLink
-        :to="`/activities/classes/${activity.name}`"
+        :to="`/activities/classes/${classItem.name}`"
         style="text-decoration: none"
       >
         <IntroCard
-          :imgSrc="activity.pic"
-          :header="activity.name"
-          :description="activity.intro"
+          :imgSrc="classItem.pic"
+          :header="classItem.name"
+          :description="classItem.intro"
           :imageRight="idx % 2 === 1"
         />
       </NuxtLink>
@@ -22,7 +22,7 @@ import { ref, onMounted } from "vue";
 import IntroCard from "~/components/IntroCard.vue";
 
 const { $supabase } = useNuxtApp();
-const activities = ref([]);
+const classes = ref([]);
 
 async function getClasses() {
   const { data, error } = await $supabase
@@ -32,7 +32,7 @@ async function getClasses() {
   if (error) {
     console.error("Supabase error:", error);
   }
-  activities.value = data || [];
+  classes.value = data || [];
 }
 
 onMounted(() => {
