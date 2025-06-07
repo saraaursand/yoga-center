@@ -15,18 +15,21 @@ defineProps({
 });
 </script>
 
+// ...existing code...
 <style scoped>
 .info-card {
-  margin-left: var(--widget-gap);
-  margin-right: var(--widget-gap);
+  margin-left: var(--WIDGET-GAP);
+  margin-right: var(--WIDGET-GAP);
   margin-bottom: 2rem;
-  border-radius: 8px;
+  border-radius: 16px;
   overflow: hidden;
   font-family: var(--FONT, Georgia, serif);
   box-shadow: 0 2px 8px rgba(0,0,0,0.03);
   background: var(--C03, #96AE93);
   width: 100%;
-  max-width: 420px;
+  max-width: var(--INFO-CARD-MAX-WIDTH);
+  min-width: var(--INFO-CARD-MIN-WIDTH);
+  height: var(--INFO-CARD-HEIGHT);
   display: flex;
   flex-direction: column;
 }
@@ -37,8 +40,8 @@ defineProps({
   font-size: var(--MENU, 24px);
   font-weight: bold;
   padding: 1rem 2rem;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
   text-align: center;
   letter-spacing: 1px;
 }
@@ -47,23 +50,25 @@ defineProps({
   background: var(--C02, #84A181);
   color: var(--C06, #000);
   font-size: var(--DESCRIPTION, 24px);
-  padding: 2rem 2rem 2rem 2rem;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+  padding: 2rem;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex: 1;
 }
 
 .when-date {
-  font-size: 2rem;
+  font-size: var(--DESCRIPTION, 24px);
   margin-bottom: 1rem;
   text-align: center;
 }
 
 .when-time {
-  font-size: 2rem;
+  font-size: var(--DESCRIPTION, 24px);
   text-align: center;
 }
+
 </style>

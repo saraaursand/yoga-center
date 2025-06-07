@@ -17,8 +17,12 @@
   --FONT: Georgia, serif;
 
   /* Standard Gap between edges and widgets */
-  --widget-gap: 2rem;
+  --WIDGET-GAP: 2rem;
 
+  /* Info cards height and width */
+  --INFO-CARD-HEIGHT: 400px;
+  --INFO-CARD-MAX-WIDTH: 520px;
+  --INFO-CARD-MIN-WIDTH: 320px;
 }
 
 body {

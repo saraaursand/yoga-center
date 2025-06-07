@@ -18,8 +18,8 @@ defineProps({
 
 <style scoped>
 .description-card {
-  margin-left: var(--widget-gap);
-  margin-right: var(--widget-gap);
+  margin-left: var(--WIDGET-GAP);
+  margin-right: var(--WIDGET-GAP);
   margin-bottom: 2rem;
   border-radius: 8px;
   overflow: hidden;
