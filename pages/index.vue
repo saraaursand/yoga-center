@@ -9,10 +9,10 @@
         class="home-image""
       />
 
-      <!-- Tekstblokk -->
       <div
-        class="absolute top-1/2 right-12 transform -translate-y-1/2
-               w-[90%] max-w-md bg-white bg-opacity-90 shadow-lg p-6 md:p-8"
+        class="absolute top-1/2 right-6 md:right-12 transform -translate-y-1/2 
+              bg-white bg-opacity-90 shadow-lg p-6 md:p-8 w-[90%] max-w-md
+              mx-auto md:mx-0"
       >
         <p class="text-gray-800 text-base md:text-lg leading-relaxed text-center md:text-left">
           Find your balance, strength, and inner peace in a space designed for mindfulness and movement.
