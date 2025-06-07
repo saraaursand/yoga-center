@@ -21,8 +21,8 @@ defineProps({
 .intro-card {
   display: flex;
   align-items: center;
-  margin-left: var(--widget-gap);
-  margin-right: var(--widget-gap);
+  margin-left: var(--WIDGET-GAP);
+  margin-right: var(--WIDGET-GAP);
   background: var(--C02, #84A181);
   padding: 2rem;
   border-radius: 8px;
