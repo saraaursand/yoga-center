@@ -7,7 +7,7 @@
   --C05: #ffffff;
   --C06: #000000;
 
-  /* Figma Font Sizes */
+  /* Desktop font sizes */
   --HEADER: 64px;
   --SUBHEADER: 36px;
   --MENU: 24px;
@@ -20,15 +20,26 @@
   --widget-gap: 2rem;
 }
 
+@media (max-width: 600px) {
+  :root {
+    --HEADER: 40px;
+    --SUBHEADER: 22px;
+    --DESCRIPTION: 16px;
+    --MENU: 16px;
+  }
+}
+
 body {
   background-color: var(--C04);
 }
 
 html,
 body {
-  height: 100%;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
 h1 {
