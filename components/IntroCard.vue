@@ -53,4 +53,20 @@ defineProps({
   font-family: var(--FONT, Georgia, serif);
   margin: 0;
 }
+
+@media (max-width: 600px) {
+  .intro-card {
+    flex-direction: column !important;
+    align-items: center;
+  }
+  .intro-img {
+    order: -1;
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+  .intro-content {
+    text-align: center;
+  }
+}
 </style>

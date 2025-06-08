@@ -79,11 +79,18 @@ import CenterCard from '~/components/CenterCard.vue'
   margin-bottom: 2rem;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 600px) {
   .contact-cards-row {
     flex-direction: column;
     gap: 1.5rem;
     align-items: stretch;
+  }
+  .info-card {
+    width: 95vw !important;
+    min-width: 95vw !important;
+    max-width: 95vw !important;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 </style>
