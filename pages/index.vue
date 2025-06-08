@@ -111,7 +111,7 @@
   }
 
   .book-button:hover {
-  background-color: #84a181; /* Fargen når musen er over */
+  background-color: #84a181; 
 }
 }
 </style>
