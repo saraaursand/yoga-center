@@ -31,6 +31,10 @@
     --SUBHEADER: 22px;
     --DESCRIPTION: 16px;
     --MENU: 16px;
+
+    --INFO-CARD-HEIGHT: 400px;
+    --INFO-CARD-MAX-WIDTH: 300px;
+    --INFO-CARD-MIN-WIDTH: 400px;
   }
 }
 
