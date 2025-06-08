@@ -1,28 +1,28 @@
 <template>
   <div class="bg-green-100">
-    <div class="hero-wrapper">
+    <div class="home-wrapper">
       <img
         src="/images/home.png"
         alt="Yoga group"
-        class="hero-image"
+        class="home-image"
       />
 
-      <div class="hero-text-box">
+      <div class="home-text-box">
         <p>
           Find your balance, strength, and inner peace in a space designed for mindfulness and movement.
           Whether you're new to yoga or deepening your practice, our classes offer a sanctuary to breathe,
           flow, and grow. Join our warm and welcoming community and experience the transformative power of yoga.
         </p>
-        <button>
+        <NuxtLink to="/highlights" class="book-button">
           BOOK NOW
-        </button>
+        </NuxtLink>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.hero-wrapper {
+.home-wrapper {
   position: relative;
   width: 100vw;
   margin-left: calc(50% - 50vw);
@@ -30,7 +30,7 @@
   overflow: hidden;
 }
 
-.hero-image {
+.home-image {
   width: 100vw;
   height: 40vw;
   object-fit: cover;
@@ -39,7 +39,7 @@
 }
 
 /* Felles stil for tekstboksen */
-.hero-text-box {
+.home-text-box {
   background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
@@ -54,33 +54,36 @@
 
 /* Mobil (tekst under bildet) */
 @media (max-width: 767px) {
-  .hero-text-box {
+  .home-text-box {
     position: static;
-    margin: 2rem auto 0 auto;
+    margin: 3rem auto 0 auto;
     text-align: center;
-    height: auto;
+    height: 25rem;
     max-width: 80%;
     font-size: 1.5rem;
     line-height: 1.3;
   }
 
-  .hero-text-box button {
+  .book-button {
     margin-left: auto;
     margin-right: auto;
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
+    margin-top: 2rem;
+    padding: 1rem 2.5rem;
     background-color: #b9c9b7;
     border: none;
     border-radius: 0.375rem;
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 1rem;
     cursor: pointer;
-    
+    font-family: 'georgia', serif;
+    text-decoration: none;
+    color: #000;
   }
 }
 
 /* Desktop (tekst over bildet) */
 @media (min-width: 768px) {
-  .hero-text-box {
+  .home-text-box {
     position: absolute;
     top: 50%;
     right: 1rem;
@@ -89,20 +92,25 @@
     line-height: 1.3;
     height:39vw;
     background-color: rgba(255, 255, 255, 0.75);
+    
   }
 
-  .hero-text-box button {
+  .book-button {
     margin-top: 1.5rem;
-    padding: 0.5rem 1.5rem;
+    padding: 1.2rem 2rem;
     background-color: #b9c9b7;
     border: none;
     border-radius: 0.375rem;
-    font-weight: 600;
+    font-weight: 400;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-size: 1.2rem;
+    font-family: 'georgia', serif;
+    text-decoration: none;
+    color: #000;
   }
 
-  .hero-text-box button:hover {
+  .book-button:hover {
   background-color: #84a181; /* Fargen når musen er over */
 }
 }
