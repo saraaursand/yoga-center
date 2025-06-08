@@ -43,12 +43,14 @@
   background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
-  max-width: 28rem;
-  width: 90%;
+  max-width: 33rem;
+  width: 100%;
+  height: 39vw;
   color: #111;
   z-index: 10;
-  font-size: 1rem;
+  font-size: 2rem;
   border-radius: 0.75rem;
+  text-align: center;
 }
 
 /* Mobil (tekst under bildet) */
@@ -60,6 +62,8 @@
   }
 
   .hero-text-box button {
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 1rem;
     padding: 0.5rem 1rem;
     background-color: #b9c9b7;
@@ -76,9 +80,10 @@
   .hero-text-box {
     position: absolute;
     top: 50%;
-    right: 3rem;
+    right: 1rem;
     transform: translateY(-50%);
-    text-align: left;
+    text-align: center;
+    line-height: 1.3;
   }
 
   .hero-text-box button {
