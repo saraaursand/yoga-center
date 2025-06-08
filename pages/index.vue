@@ -45,7 +45,6 @@
   padding: 1.5rem;
   max-width: 33rem;
   width: 100%;
-  height: 39vw;
   color: #111;
   z-index: 10;
   font-size: 2rem;
@@ -59,6 +58,10 @@
     position: static;
     margin: 2rem auto 0 auto;
     text-align: center;
+    height: auto;
+    max-width: 80%;
+    font-size: 1.5rem;
+    line-height: 1.3;
   }
 
   .hero-text-box button {
@@ -84,6 +87,8 @@
     transform: translateY(-50%);
     text-align: center;
     line-height: 1.3;
+    height:39vw;
+    background-color: rgba(255, 255, 255, 0.75);
   }
 
   .hero-text-box button {
