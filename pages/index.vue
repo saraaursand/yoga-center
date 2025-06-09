@@ -14,7 +14,7 @@
           flow, and grow. Join our warm and welcoming community and experience the transformative power of yoga.
         </p>
         <NuxtLink to="/highlights" class="book-button">
-          BOOK NOW
+          SEE HIGHLIGHTS
         </NuxtLink>
       </div>
     </div>
