@@ -1,6 +1,13 @@
 <template>
   <div>
-    <h1 class =title>Our Activities</h1>
+    <div class="activities-image-wrapper">
+      <img
+        class="activities-image"
+        src="https://urexuitkakjvttquebyb.supabase.co/storage/v1/object/sign/activities-pics/outActivities.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84ODFmYjQwZS0wZmI2LTRiY2ItODU1OC1hNzQwNjVmNzk1MTAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhY3Rpdml0aWVzLXBpY3Mvb3V0QWN0aXZpdGllcy5wbmciLCJpYXQiOjE3NDk0ODIyODUsImV4cCI6MTc4MTAxODI4NX0.xE44kg2D9GltPewUWIKqL0_4SK5-rRf3c7QGVSxPMR0"
+        alt="Our Activities"
+      />
+    </div>
+    <h1 class="title">Our Activities</h1>
     <div class="activity-buttons-row">
       <NuxtLink to="/activities/classes">
         <div
@@ -27,6 +34,24 @@
 </template>
 
 <style scoped>
+.activities-image-wrapper {
+  width: 100vw;
+  min-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  overflow: hidden;
+  position: relative;
+}
+.activities-image {
+  width: 100vw;
+  min-width: 100vw;
+  height: 25vw;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
 .activity-buttons-row {
   display: flex;
   gap: 25px;
@@ -71,6 +96,9 @@
 }
 
 @media (max-width: 600px) {
+  .activities-image-wrapper {
+    height: auto;
+  }
   .activity-buttons-row {
     flex-direction: column;
     align-items: center;
