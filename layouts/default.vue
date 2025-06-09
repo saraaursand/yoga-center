@@ -10,8 +10,8 @@
 
 <script setup>
 import Header from '~/components/Header.vue'
-import IntroCard from '~/components/IntroCard.vue';
-import DescriptionCard from '~/components/DescriptionCard.vue';
+import IntroCard from '~/components/IntroCard.vue'
+import DescriptionCard from '~/components/DescriptionCard.vue'
 import Footer from '~/components/Footer.vue'
 </script>
 
@@ -24,12 +24,12 @@ import Footer from '~/components/Footer.vue'
 
 .content {
   flex: 1;
+  margin-top: 80px; /* Default: desktop header height */
 }
 
-/* Add this for mobile: */
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .content {
-    margin-top: 64px; /* Match your mobile header height */
+    margin-top: 64px; /* Mobile: header height */
   }
 }
 </style>

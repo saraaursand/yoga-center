@@ -44,7 +44,7 @@ import CenterCard from '~/components/CenterCard.vue'
 .contact-us-image {
   width: 100vw;
   min-width: 100vw;
-  height: 40vw;
+  height: 25vw;
   object-fit: cover;
   display: block;
   margin: 0;

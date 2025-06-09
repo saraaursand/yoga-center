@@ -43,9 +43,7 @@ function closeMenu() {
 }
 
 const route = useRoute()
-// Activities: highlight if we are on /activities or any subpage (e.g., /activities/classes)
 const isActivitiesActive = computed(() => route.path.startsWith('/activities'))
-// Teachers: highlight if we are on /teachers or any subpage (e.g., /teachers/profile)
 const isTeachersActive = computed(() => route.path.startsWith('/teachers'))
 </script>
 
@@ -55,17 +53,20 @@ const isTeachersActive = computed(() => route.path.startsWith('/teachers'))
   padding: 0;
   font-size: var(--MENU);
   font-family: var(--FONT);
-  position: relative;
-  z-index: 1;
+  position: fixed;      /* <--- FIXED HEADER */
+  z-index: 1000;        /* <--- Always on top */
   width: 100%;
+  top: 0;               /* <--- Stick to top */
+  left: 0;
+  right: 0;
+  height: 80px;         /* Desktop height */
 }
 
-/* Spread logo and menu links over the entire width */
 .header-inner {
   display: flex;
   align-items: center;
   width: 100%;
-  padding-left: 18px; /* a bit of space before the logo */
+  padding-left: 18px;
   padding-right: 0;
   box-sizing: border-box;
   min-width: 0;
@@ -73,7 +74,6 @@ const isTeachersActive = computed(() => route.path.startsWith('/teachers'))
   position: relative;
 }
 
-/* Logo at far left */
 .logo {
   display: flex;
   align-items: center;
@@ -83,7 +83,7 @@ const isTeachersActive = computed(() => route.path.startsWith('/teachers'))
 }
 
 .logo img {
-  width: 54px;   /* bigger, but still balanced */
+  width: 54px;
   height: 54px;
   border-radius: 50%;
   object-fit: cover;
@@ -117,12 +117,10 @@ const isTeachersActive = computed(() => route.path.startsWith('/teachers'))
 .menu a.router-link-active {
   color: var(--C06) !important;
 }
-
 .menu a.active-parent {
   color: var(--C06) !important;
 }
 
-/* Hamburger menu hidden on desktop */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -159,20 +157,17 @@ const isTeachersActive = computed(() => route.path.startsWith('/teachers'))
 }
 
 @media (max-width: 900px) {
+  .header {
+    height: 64px;      /* Mobile header height */
+  }
   .header-inner {
-    padding-left: 10px; /* a bit of space before the logo on mobile */
+    padding-left: 10px;
     padding-right: 0.4rem;
     max-width: 100vw;
     height: 64px;
   }
-  .header {
-    height: 64px;
-  }
-  .logo {
-    margin-left: 0;
-  }
   .logo img {
-    width: 40px;   /* slightly bigger than before for mobile */
+    width: 40px;
     height: 40px;
   }
   .menu {
@@ -195,7 +190,6 @@ const isTeachersActive = computed(() => route.path.startsWith('/teachers'))
     flex-wrap: nowrap;
     overflow-x: visible;
   }
-
   .menu.open {
     display: flex;
   }
