@@ -1,6 +1,6 @@
 <template>
   <div class="info-card">
-    <div class="info-header">WHEN</div>
+    <div class="info-header">{{ header || "WHEN" }}</div>
     <div class="info-content when-content">
       <div class="when-date">{{ date }}</div>
       <div class="when-time">{{ time }}</div>
@@ -10,12 +10,15 @@
 
 <script setup>
 defineProps({
+  header: {
+    type: String,
+    default: "WHEN",
+  },
   date: String,
-  time: String
+  time: String,
 });
 </script>
 
-// ...existing code...
 <style scoped>
 .info-card {
   margin-left: var(--WIDGET-GAP);
@@ -24,8 +27,8 @@ defineProps({
   border-radius: 16px;
   overflow: hidden;
   font-family: var(--FONT, Georgia, serif);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-  background: var(--C03, #96AE93);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  background: var(--C03, #96ae93);
   width: 100%;
   max-width: var(--INFO-CARD-MAX-WIDTH);
   min-width: var(--INFO-CARD-MIN-WIDTH);
@@ -35,7 +38,7 @@ defineProps({
 }
 
 .info-header {
-  background: var(--C01, #72936E);
+  background: var(--C01, #72936e);
   color: var(--C05, #fff);
   font-size: var(--MENU, 24px);
   font-weight: bold;
@@ -47,7 +50,7 @@ defineProps({
 }
 
 .info-content.when-content {
-  background: var(--C02, #84A181);
+  background: var(--C02, #84a181);
   color: var(--C06, #000);
   font-size: var(--DESCRIPTION, 24px);
   padding: 2rem;
@@ -70,5 +73,4 @@ defineProps({
   font-size: var(--DESCRIPTION, 24px);
   text-align: center;
 }
-
 </style>
