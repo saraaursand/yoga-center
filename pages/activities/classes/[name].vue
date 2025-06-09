@@ -16,7 +16,7 @@
       :description="classItem.description"
     />
     <div v-if="teachers && teachers.length && classItem" class="info-row">
-      <WhoCard :imgSrc="teachers[0].pic" :name="teachers[0].name" />
+      <WhoCard v-if="teachers && teachers.length" :teachers="teachers" />
       <WhenCard :date="classItem.when" :time="classItem.time" />
     </div>
   </div>
