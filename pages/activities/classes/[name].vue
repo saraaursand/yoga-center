@@ -6,6 +6,19 @@
       alt="Class Image"
       class="class-image"
     />
+    
+    <div style="margin-top: 2rem; margin-left: 2rem; ">
+      <Breadcrumbs :crumbs="breadcrumbs" />
+    </div>
+    <div v-if="cameFromHighlights" style= "margin-top: 1rem; margin-left: 2rem;">
+      <NuxtLink
+        to="/highlights"
+        class="text-sm text-gray-600 hover:text-black hover:underline"
+      >
+        ← Back to highlights
+      </NuxtLink>
+    </div>
+
     <h1 v-if="pending">Loading...</h1>
     <h1 class="name" v-else>
       {{ classItem && classItem.name ? classItem.name : "Seminar not found" }}
@@ -16,7 +29,7 @@
       :description="classItem.description"
     />
     <div v-if="teachers && teachers.length && classItem" class="info-row">
-      <WhoCard v-if="teachers && teachers.length" :teachers="teachers" />
+      <WhoCard v-if="teachers && teachers.length" :teachers="teachers" :fromActivity="classItem?.name" />
       <WhenCard :date="classItem.when" :time="classItem.time" />
     </div>
   </div>
@@ -29,7 +42,9 @@ import DescriptionCard from "~/components/DescriptionCard.vue";
 import WhoCard from "~/components/WhoCard.vue";
 import WhenCard from "~/components/WhenCard.vue";
 
+
 const route = useRoute();
+const cameFromHighlights = computed(() => route.query.from === 'highlights');
 const {
   data: classArr,
   pending,
@@ -50,6 +65,14 @@ const { data: teachers } = await useAsyncData("teachersForClass", () =>
       })
     : []
 );
+
+const breadcrumbs = computed(() => [
+  { name: 'Home ', link: '/' },
+  { name: ' Activites ', link: '/activities' },
+  { name: ' Our classes ', link: '/activities/classes' },
+  { name: classItem.value?.name || 'Laster...', link: route.fullPath }
+]);
+
 </script>
 
 <style scoped>
