@@ -8,10 +8,10 @@
   --C06: #000000;
 
   /* Desktop font sizes */
-  --HEADER: 64px;
-  --SUBHEADER: 36px;
-  --MENU: 24px;
-  --DESCRIPTION: 24px;
+  --HEADER: 40px;        /* Main headings (h1) */
+  --SUBHEADER: 28px;     /* Subheadings (h2, h3) */
+  --MENU: 18px;          /* Navigation menu items */
+  --DESCRIPTION: 16px;   /* Body and description text */
 
   /* Figma Fonts */
   --FONT: Georgia, serif;
@@ -27,10 +27,10 @@
 
 @media (max-width: 600px) {
   :root {
-    --HEADER: 40px;
-    --SUBHEADER: 22px;
-    --DESCRIPTION: 16px;
-    --MENU: 16px;
+    --HEADER: 28px;       /* Main headings (h1) */
+    --SUBHEADER: 20px;    /* Subheadings (h2, h3) */
+    --MENU: 16px;         /* Navigation menu items */
+    --DESCRIPTION: 14px;  /* Body and description text */
 
     --INFO-CARD-HEIGHT: 400px;
     --INFO-CARD-MAX-WIDTH: 300px;
