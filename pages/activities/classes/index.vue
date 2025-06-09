@@ -1,15 +1,15 @@
 <template>
   <div>
-    <h1>OUR CLASSES</h1>
-    <div v-for="(classItem, idx) in classes" :key="classItem.id">
+    <h1>OUR SEMINARS</h1>
+    <div v-for="(seminar, idx) in seminars" :key="seminar.id">
       <NuxtLink
-        :to="`/activities/classes/${classItem.name}`"
+        :to="`/activities/classes/${seminar.name}`"
         style="text-decoration: none"
       >
         <IntroCard
-          :imgSrc="classItem.pic"
-          :header="classItem.name"
-          :description="classItem.intro"
+          :imgSrc="seminar.pic"
+          :header="seminar.name"
+          :description="seminar.intro"
           :imageRight="idx % 2 === 1"
         />
       </NuxtLink>
@@ -18,26 +18,13 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { useAsyncData } from "nuxt/app";
 import IntroCard from "~/components/IntroCard.vue";
 
-const { $supabase } = useNuxtApp();
-const classes = ref([]);
-
-async function getClasses() {
-  const { data, error } = await $supabase
-    .from("activities")
-    .select("*")
-    .eq("type", "class");
-  if (error) {
-    console.error("Supabase error:", error);
-  }
-  classes.value = data || [];
-}
-
-onMounted(() => {
-  getClasses();
-});
+// Fetch seminars from the API for SSR
+const { data: seminars } = await useAsyncData("classes", () =>
+  $fetch("/api/classes/classesAll")
+);
 </script>
 
 <style scoped>

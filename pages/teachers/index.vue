@@ -5,7 +5,8 @@
       <NuxtLink
         :to="`/teachers/${encodeURIComponent(teacher.name)}`"
         style="text-decoration: none"
-      > <!--Encode to handle spaces in name -->
+      >
+        <!--Encode to handle spaces in name -->
         <IntroCard
           :imgSrc="teacher.pic"
           :header="teacher.name"
@@ -21,6 +22,7 @@
 import { useAsyncData } from "nuxt/app";
 import IntroCard from "~/components/IntroCard.vue";
 
+// Get all teachers from the API
 const { data: teachers } = await useAsyncData("teachers", () =>
   $fetch("/api/teacher/teachersAll")
 );

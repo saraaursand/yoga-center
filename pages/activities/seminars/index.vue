@@ -18,26 +18,13 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { useAsyncData } from "nuxt/app";
 import IntroCard from "~/components/IntroCard.vue";
 
-const { $supabase } = useNuxtApp();
-const seminars = ref([]);
-
-async function getClasses() {
-  const { data, error } = await $supabase
-    .from("activities")
-    .select("*")
-    .eq("type", "seminar");
-  if (error) {
-    console.error("Supabase error:", error);
-  }
-  seminars.value = data || [];
-}
-
-onMounted(() => {
-  getClasses();
-});
+// Fetch seminars from the API for SSR
+const { data: seminars } = await useAsyncData("seminars", () =>
+  $fetch("/api/seminars/seminarsAll")
+);
 </script>
 
 <style scoped>
