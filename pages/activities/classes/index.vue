@@ -1,15 +1,15 @@
 <template>
   <div>
-    <h1>OUR SEMINARS</h1>
-    <div v-for="(seminar, idx) in seminars" :key="seminar.id">
+    <h1>OUR CLASSES</h1>
+    <div v-for="(classItem, idx) in classes" :key="classItem.id">
       <NuxtLink
-        :to="`/activities/classes/${seminar.name}`"
+        :to="`/activities/classes/${encodeURIComponent(classItem.name)}`"
         style="text-decoration: none"
       >
         <IntroCard
-          :imgSrc="seminar.pic"
-          :header="seminar.name"
-          :description="seminar.intro"
+          :imgSrc="classItem.pic"
+          :header="classItem.name"
+          :description="classItem.intro"
           :imageRight="idx % 2 === 1"
         />
       </NuxtLink>
@@ -21,8 +21,8 @@
 import { useAsyncData } from "nuxt/app";
 import IntroCard from "~/components/IntroCard.vue";
 
-// Fetch seminars from the API for SSR
-const { data: seminars } = await useAsyncData("classes", () =>
+// Fetch classes from the API for SSR
+const { data: classes } = await useAsyncData("classes", () =>
   $fetch("/api/classes/classesAll")
 );
 </script>

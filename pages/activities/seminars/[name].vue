@@ -1,30 +1,27 @@
 <template>
   <div>
-    <h1>{{ seminarData?.name || "Seminar not found" }}</h1>
+    <h1 v-if="pending">Loading...</h1>
+    <h1 v-else>
+      {{ seminar && seminar.name ? seminar.name : "Seminar not found" }}
+    </h1>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
-import { useRoute } from "vue-router";
+import { useAsyncData, useRoute } from "nuxt/app";
+import { computed } from "vue";
 
 const route = useRoute();
-const { $supabase } = useNuxtApp();
-const seminarData = ref(null);
+const {
+  data: seminarArr,
+  pending,
+  error,
+} = await useAsyncData("seminar", () =>
+  $fetch(`/api/seminars/${encodeURIComponent(route.params.name)}`)
+);
 
-async function fetchClass() {
-  const { data, error } = await $supabase
-    .from("activities")
-    .select("*")
-    .eq("type", "seminar")
-    .eq("name", route.params.name)
-    .single();
-  if (!error) {
-    seminarData.value = data;
-  }
-}
-
-onMounted(() => {
-  fetchClass();
-});
+// The API returns an array, so take the first seminar if available
+const seminar = computed(() =>
+  seminarArr.value && seminarArr.value.length ? seminarArr.value[0] : null
+);
 </script>

@@ -1,30 +1,27 @@
 <template>
   <div>
-    <h1>{{ classData?.name || "Class not found" }}</h1>
+    <h1 v-if="pending">Loading...</h1>
+    <h1 v-else>
+      {{ classItem && classItem.name ? classItem.name : "Seminar not found" }}
+    </h1>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
-import { useRoute } from "vue-router";
+import { useAsyncData, useRoute } from "nuxt/app";
+import { computed } from "vue";
 
 const route = useRoute();
-const { $supabase } = useNuxtApp();
-const classData = ref(null);
+const {
+  data: classArr,
+  pending,
+  error,
+} = await useAsyncData("class", () =>
+  $fetch(`/api/classes/${encodeURIComponent(route.params.name)}`)
+);
 
-async function fetchClass() {
-  const { data, error } = await $supabase
-    .from("activities")
-    .select("*")
-    .eq("type", "class")
-    .eq("name", route.params.name)
-    .single();
-  if (!error) {
-    classData.value = data;
-  }
-}
-
-onMounted(() => {
-  fetchClass();
-});
+// The API returns an array, so take the first class if available
+const classItem = computed(() =>
+  classArr.value && classArr.value.length ? classArr.value[0] : null
+);
 </script>
