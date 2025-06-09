@@ -8,16 +8,20 @@
       />
     </div>
     <h1 class="highlights-header">Highlights</h1>
-    <ul>
-      <li v-for="activity in highlights" :key="activity.id">
-        {{ activity.name }}
-      </li>
-    </ul>
+    <div class="highlights-grid">
+      <HighlightCard
+        v-for="activity in highlights"
+        :key="activity.id"
+        :name="activity.name"
+        :pic="activity.pic"
+      />
+    </div>
   </div>
 </template>
 
 <script setup>
 import { useAsyncData } from "nuxt/app";
+import HighlightCard from "~/components/HighlightCard.vue";
 
 const {
   data: highlights,
@@ -54,5 +58,13 @@ const {
   color: var(--C06);
   text-align: center;
   font-weight: bold;
+}
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 2rem auto;
+  padding: 0 1rem;
 }
 </style>
