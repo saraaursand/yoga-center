@@ -76,4 +76,17 @@ const { data: teachers } = await useAsyncData("teachersForClass", () =>
   gap: 2rem;
   margin-bottom: 2rem;
 }
+
+@media (max-width: 600px) {
+  .info-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .info-card {
+    width: 85vw;
+    min-width: unset;
+    max-width: unset;
+  }
+}
 </style>
