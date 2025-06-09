@@ -111,8 +111,8 @@ function getLink(item) {
 }
 
 .who-img {
-  width: 120px;
-  height: 150px;
+  width: 300px;
+  height: 200px;
   object-fit: cover;
   border-radius: 12px;
   margin-bottom: 1rem;

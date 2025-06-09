@@ -34,8 +34,8 @@ defineProps({
   flex-direction: row-reverse;
 }
 .intro-img {
-  width: 180px;
-  height: 180px;
+  width: 300px;
+  height: 200px;
   object-fit: cover;
   border-radius: 8px;
 }
