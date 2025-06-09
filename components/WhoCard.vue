@@ -1,16 +1,16 @@
 <template>
   <div class="info-card">
-    <div class="info-header">WHO</div>
+    <div class="info-header">{{ header || "WHO" }}</div>
     <div class="info-content who-content">
       <div class="who-list">
         <NuxtLink
-          v-for="teacher in teachers"
-          :key="teacher.id"
-          :to="`/teachers/${encodeURIComponent(teacher.name)}`"
+          v-for="item in teachers"
+          :key="item.id"
+          :to="getLink(item)"
           class="who-item"
         >
-          <img :src="teacher.pic" alt="Person" class="who-img" />
-          <div class="who-name">{{ teacher.name }}</div>
+          <img :src="item.pic" alt="Person" class="who-img" />
+          <div class="who-name">{{ item.name }}</div>
         </NuxtLink>
       </div>
     </div>
@@ -18,13 +18,30 @@
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
   teachers: {
     type: Array,
     required: true,
     default: () => [],
   },
+  linkType: {
+    type: String,
+    default: "teacher",
+  },
+  header: {
+    type: String,
+    default: "WHO",
+  },
 });
+function getLink(item) {
+  if (props.linkType === "activity") {
+    if (item.type === "seminar") {
+      return `/activities/seminars/${encodeURIComponent(item.name)}`;
+    }
+    return `/activities/classes/${encodeURIComponent(item.name)}`;
+  }
+  return `/teachers/${encodeURIComponent(item.name)}`;
+}
 </script>
 
 <style scoped>
@@ -40,7 +57,6 @@ defineProps({
   width: 100%;
   max-width: var(--INFO-CARD-MAX-WIDTH);
   min-width: var(--INFO-CARD-MIN-WIDTH);
-  height: var(--INFO-CARD-HEIGHT);
   display: flex;
   flex-direction: column;
 }

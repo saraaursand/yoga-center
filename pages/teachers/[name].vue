@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 v-if="pending">Loading...</h1>
-    <h1 class=name v-else>
+    <h1 class="name" v-else>
       {{ teacher && teacher.name ? teacher.name : "Teacher not found" }}
     </h1>
     <img
@@ -12,7 +12,7 @@
     />
     <DescriptionCard v-if="teacher" header="CV" :description="teacher.CV" />
     <div v-if="activities && activities.length && teacher" class="info-row">
-      <WhoCard :teachers="activities" />
+      <WhoCard :teachers="activities" linkType="activity" header="ACTIVITIES" />
       <WhenCard header="ABOUT" :date="teacher.about" :time="''" />
     </div>
   </div>
