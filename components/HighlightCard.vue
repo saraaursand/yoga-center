@@ -19,9 +19,9 @@ const props = defineProps({
 // Compute the link based on activity type and name
 const activityLink = computed(() => {
   if (props.type === "class") {
-    return `/activities/classes/${encodeURIComponent(props.name)}`;
+    return `/activities/classes/${encodeURIComponent(props.name)}?from=highlights`;
   } else if (props.type === "seminar") {
-    return `/activities/seminars/${encodeURIComponent(props.name)}`;
+    return `/activities/seminars/${encodeURIComponent(props.name)}?from=highlights`;
   }
   return "#";
 });
