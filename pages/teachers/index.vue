@@ -15,23 +15,12 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { useAsyncData } from "nuxt/app";
 import IntroCard from "~/components/IntroCard.vue";
 
-const { $supabase } = useNuxtApp();
-const teachers = ref([]);
-
-async function getTeachers() {
-  const { data, error } = await $supabase.from("teachers").select("*");
-  if (error) {
-    console.error("Supabase error:", error);
-  }
-  teachers.value = data || [];
-}
-
-onMounted(() => {
-  getTeachers();
-});
+const { data: teachers } = await useAsyncData("teachers", () =>
+  $fetch("/api/teachersAll")
+);
 </script>
 
 <style scoped>
