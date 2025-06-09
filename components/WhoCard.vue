@@ -3,10 +3,15 @@
     <div class="info-header">WHO</div>
     <div class="info-content who-content">
       <div class="who-list">
-        <div v-for="teacher in teachers" :key="teacher.id" class="who-item">
+        <NuxtLink
+          v-for="teacher in teachers"
+          :key="teacher.id"
+          :to="`/teachers/${encodeURIComponent(teacher.name)}`"
+          class="who-item"
+        >
           <img :src="teacher.pic" alt="Person" class="who-img" />
           <div class="who-name">{{ teacher.name }}</div>
-        </div>
+        </NuxtLink>
       </div>
     </div>
   </div>
@@ -79,6 +84,14 @@ defineProps({
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.who-item:hover {
+  transform: scale(1.04);
 }
 
 .who-img {
