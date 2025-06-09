@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>OUR SEMINARS</h1>
+    <h1 class="title">Our seminars</h1>
     <div v-for="(seminar, idx) in seminars" :key="seminar.id">
       <NuxtLink
         :to="`/activities/seminars/${encodeURIComponent(seminar.name)}`"
@@ -31,5 +31,13 @@ const { data: seminars } = await useAsyncData("seminars", () =>
 a {
   color: inherit;
   text-decoration: none;
+}
+.title {
+  margin-top: 40px;
+  margin-bottom: 24px;
+  font-size: var(--HEADER);
+  color: var(--C06);
+  text-align: center;
+  font-weight: bold;
 }
 </style>
