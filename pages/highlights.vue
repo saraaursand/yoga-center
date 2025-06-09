@@ -9,12 +9,8 @@
     </div>
     <h1 class="highlights-header">Highlights</h1>
     <div class="highlights-grid">
-      <HighlightCard
-        v-for="activity in highlights"
-        :key="activity.id"
-        :name="activity.name"
-        :pic="activity.pic"
-      />
+      <HighlightCard v-for="activity in highlights" :key="activity.id"
+      :name="activity.name" :pic="activity.pic" :type="activity.type" />
     </div>
   </div>
 </template>
@@ -66,5 +62,12 @@ const {
   max-width: 1200px;
   margin: 0 auto 2rem auto;
   padding: 0 1rem;
+}
+
+@media (max-width: 600px) {
+  .highlights-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }
 </style>
