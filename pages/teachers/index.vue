@@ -1,8 +1,12 @@
 <template>
   <div>
-    <h1>OUR TEACHERS</h1>
+    <h1 class="title">Our teachers</h1>
     <div v-for="(teacher, idx) in teachers" :key="teacher.id">
-      <NuxtLink :to="`/teachers/${teacher.name}`" style="text-decoration: none">
+      <NuxtLink
+        :to="`/teachers/${encodeURIComponent(teacher.name)}`"
+        style="text-decoration: none"
+      >
+        <!--Encode to handle spaces in name -->
         <IntroCard
           :imgSrc="teacher.pic"
           :header="teacher.name"
@@ -15,28 +19,26 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { useAsyncData } from "nuxt/app";
 import IntroCard from "~/components/IntroCard.vue";
 
-const { $supabase } = useNuxtApp();
-const teachers = ref([]);
-
-async function getTeachers() {
-  const { data, error } = await $supabase.from("teachers").select("*");
-  if (error) {
-    console.error("Supabase error:", error);
-  }
-  teachers.value = data || [];
-}
-
-onMounted(() => {
-  getTeachers();
-});
+// Get all teachers from the API
+const { data: teachers } = await useAsyncData("teachers", () =>
+  $fetch("/api/teacher/teachersAll")
+);
 </script>
 
 <style scoped>
 a {
   color: inherit;
   text-decoration: none;
+}
+.title {
+  margin-top: 40px;
+  margin-bottom: 24px;
+  font-size: var(--HEADER);
+  color: var(--C06);
+  text-align: center;
+  font-weight: bold;
 }
 </style>

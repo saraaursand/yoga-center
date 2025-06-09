@@ -44,6 +44,7 @@ defineProps({
   padding: 1.5rem 2rem;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  text-align: center;
+  text-align: left;
+  white-space: pre-line;
 }
 </style>

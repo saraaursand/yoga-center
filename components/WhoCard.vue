@@ -1,18 +1,47 @@
 <template>
   <div class="info-card">
-    <div class="info-header">WHO</div>
+    <div class="info-header">{{ header || "WHO" }}</div>
     <div class="info-content who-content">
-      <img :src="imgSrc" alt="Person" class="who-img" />
-      <div class="who-name">{{ name }}</div>
+      <div class="who-list">
+        <NuxtLink
+          v-for="item in teachers"
+          :key="item.id"
+          :to="getLink(item)"
+          class="who-item"
+        >
+          <img :src="item.pic" alt="Person" class="who-img" />
+          <div class="who-name">{{ item.name }}</div>
+        </NuxtLink>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-defineProps({
-  imgSrc: String,
-  name: String
+const props = defineProps({
+  teachers: {
+    type: Array,
+    required: true,
+    default: () => [],
+  },
+  linkType: {
+    type: String,
+    default: "teacher",
+  },
+  header: {
+    type: String,
+    default: "WHO",
+  },
 });
+function getLink(item) {
+  if (props.linkType === "activity") {
+    if (item.type === "seminar") {
+      return `/activities/seminars/${encodeURIComponent(item.name)}`;
+    }
+    return `/activities/classes/${encodeURIComponent(item.name)}`;
+  }
+  return `/teachers/${encodeURIComponent(item.name)}`;
+}
 </script>
 
 <style scoped>
@@ -23,18 +52,17 @@ defineProps({
   border-radius: 16px;
   overflow: hidden;
   font-family: var(--FONT, Georgia, serif);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-  background: var(--C03, #96AE93);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  background: var(--C03, #96ae93);
   width: 100%;
   max-width: var(--INFO-CARD-MAX-WIDTH);
   min-width: var(--INFO-CARD-MIN-WIDTH);
-  height: var(--INFO-CARD-HEIGHT);
   display: flex;
   flex-direction: column;
 }
 
 .info-header {
-  background: var(--C01, #72936E);
+  background: var(--C01, #72936e);
   color: var(--C05, #fff);
   font-size: var(--MENU, 24px);
   font-weight: bold;
@@ -46,7 +74,7 @@ defineProps({
 }
 
 .info-content.who-content {
-  background: var(--C02, #84A181);
+  background: var(--C02, #84a181);
   color: var(--C06, #000);
   font-size: var(--DESCRIPTION, 24px);
   padding: 2rem;
@@ -59,9 +87,32 @@ defineProps({
   flex: 1;
 }
 
+.who-list {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.who-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.who-item:hover {
+  transform: scale(1.04);
+}
+
 .who-img {
-  width: 120px;
-  height: 150px;
+  width: 300px;
+  height: 200px;
   object-fit: cover;
   border-radius: 12px;
   margin-bottom: 1rem;

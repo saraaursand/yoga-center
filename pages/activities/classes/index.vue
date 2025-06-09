@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h1>OUR CLASSES</h1>
+    <h1 class="title">Our classes</h1>
     <div v-for="(classItem, idx) in classes" :key="classItem.id">
       <NuxtLink
-        :to="`/activities/classes/${classItem.name}`"
+        :to="`/activities/classes/${encodeURIComponent(classItem.name)}`"
         style="text-decoration: none"
       >
         <IntroCard
@@ -18,31 +18,26 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { useAsyncData } from "nuxt/app";
 import IntroCard from "~/components/IntroCard.vue";
 
-const { $supabase } = useNuxtApp();
-const classes = ref([]);
-
-async function getClasses() {
-  const { data, error } = await $supabase
-    .from("activities")
-    .select("*")
-    .eq("type", "class");
-  if (error) {
-    console.error("Supabase error:", error);
-  }
-  classes.value = data || [];
-}
-
-onMounted(() => {
-  getClasses();
-});
+// Fetch classes from the API for SSR
+const { data: classes } = await useAsyncData("classes", () =>
+  $fetch("/api/classes/classesAll")
+);
 </script>
 
 <style scoped>
 a {
   color: inherit;
   text-decoration: none;
+}
+.title {
+  margin-top: 40px;
+  margin-bottom: 24px;
+  font-size: var(--HEADER);
+  color: var(--C06);
+  text-align: center;
+  font-weight: bold;
 }
 </style>

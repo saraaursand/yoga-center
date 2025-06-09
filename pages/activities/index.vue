@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Our Activities</h1>
+    <h1 class =title>Our Activities</h1>
     <div class="activity-buttons-row">
       <NuxtLink to="/activities/classes">
         <div
@@ -60,6 +60,14 @@
   border-radius: 6px;
   font-size: var(--SUBHEADER);
   cursor: pointer;
+}
+.title {
+  margin-top: 40px;
+  margin-bottom: 24px;
+  font-size: var(--HEADER);
+  color: var(--C06);
+  text-align: center;
+  font-weight: bold;
 }
 
 @media (max-width: 600px) {
