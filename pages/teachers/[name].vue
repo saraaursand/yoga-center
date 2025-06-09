@@ -44,7 +44,7 @@ const teacher = computed(() =>
 // Fetch activities (classes/seminars) this teacher is responsible for
 const { data: activities } = await useAsyncData("activitiesByTeacher", () =>
   teacher.value && teacher.value.name
-    ? $fetch("/api/teacher/activityByTeacher", {
+    ? $fetch("/api/activities/activityByTeacher", {
         params: { name: teacher.value.name },
       })
     : []
