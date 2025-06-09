@@ -6,6 +6,9 @@
         src="https://urexuitkakjvttquebyb.supabase.co/storage/v1/object/sign/activities-pics/highlights.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84ODFmYjQwZS0wZmI2LTRiY2ItODU1OC1hNzQwNjVmNzk1MTAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhY3Rpdml0aWVzLXBpY3MvaGlnaGxpZ2h0cy5wbmciLCJpYXQiOjE3NDk0ODIwMzMsImV4cCI6MTc4MTAxODAzM30.iNBS5Pv7HoaUTTutuKxkaUc501TBhimfJMa65NLd9Fg"
         alt="Highlights"
       />
+    <div style="margin-top: 2rem; margin-left: 2rem; ">
+      <Breadcrumbs :crumbs="breadcrumbs" />
+    </div>
     </div>
     <h1 class="highlights-header">Highlights</h1>
     <div class="highlights-grid">
@@ -26,6 +29,11 @@ const {
 } = await useAsyncData("highlights", () =>
   $fetch("/api/activities/highlights")
 );
+
+const breadcrumbs = [
+  { name: 'Home ', link: '/' },
+  { name: ' Highlights', link: '/highlights' }
+];
 </script>
 
 <style scoped>
