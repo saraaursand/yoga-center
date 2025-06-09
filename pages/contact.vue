@@ -5,6 +5,9 @@
         class="contact-us-image"
         src="/images/contactUs.png"
       />
+    <div style="margin-top: 2rem; margin-left: 2rem; ">
+      <Breadcrumbs :crumbs="breadcrumbs" />
+    </div>
     </div>
     <div class="contact-us-content-wrapper">
       <h1 class="contact-us-header">Contact Us</h1>
@@ -30,6 +33,11 @@
 <script setup>
 import ReceptionCard from '~/components/ReceptionCard.vue'
 import CenterCard from '~/components/CenterCard.vue'
+
+const breadcrumbs = [
+  { name: 'Home ', link: '/' },
+  { name: ' Contact us', link: '/contact' }
+];
 </script>
 
 <style scoped>
