@@ -1,28 +1,29 @@
 <template>
   <div>
-    <h1>{{ teacher?.name || "Teacher not found" }}</h1>
+    <h1 v-if="pending">Loading...</h1>
+    <h1 v-else>
+      {{ teacher && teacher.name ? teacher.name : "Teacher not found" }}
+    </h1>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { useAsyncData, useRoute } from "nuxt/app";
+import { computed } from "vue";
 
 const route = useRoute();
-const { $supabase } = useNuxtApp();
-const teacher = ref(null);
+const {
+  data: teacherArr,
+  pending,
+  error,
+} = await useAsyncData("teacher", () =>
+  // Encode name to ensure the API URL is valid
+  $fetch(`/api/teacher/${encodeURIComponent(route.params.name)}`)
+);
 
-async function getTeacher() {
-  const { data, error } = await $supabase
-    .from("teachers")
-    .select("*")
-    .eq("name", route.params.name)
-    .single();
-  if (!error) {
-    teacher.value = data;
-  }
-}
-
-onMounted(() => {
-  getTeacher();
-});
+const teacher = computed(() =>
+  // The API returns an array of teachers (even when searching by name),
+  // so we take the first teacher from the array if available, otherwise return null
+  teacherArr.value && teacherArr.value.length ? teacherArr.value[0] : null
+);
 </script>

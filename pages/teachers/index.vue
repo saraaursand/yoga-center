@@ -2,7 +2,10 @@
   <div>
     <h1>OUR TEACHERS</h1>
     <div v-for="(teacher, idx) in teachers" :key="teacher.id">
-      <NuxtLink :to="`/teachers/${teacher.name}`" style="text-decoration: none">
+      <NuxtLink
+        :to="`/teachers/${encodeURIComponent(teacher.name)}`"
+        style="text-decoration: none"
+      > <!--Encode to handle spaces in name -->
         <IntroCard
           :imgSrc="teacher.pic"
           :header="teacher.name"
@@ -19,7 +22,7 @@ import { useAsyncData } from "nuxt/app";
 import IntroCard from "~/components/IntroCard.vue";
 
 const { data: teachers } = await useAsyncData("teachers", () =>
-  $fetch("/api/teachersAll")
+  $fetch("/api/teacher/teachersAll")
 );
 </script>
 
