@@ -7,8 +7,16 @@
       <nav class="menu" :class="{ open: menuOpen }">
         <NuxtLink to="/" @click="closeMenu">Home</NuxtLink>
         <NuxtLink to="/highlights" @click="closeMenu">Highlights</NuxtLink>
-        <NuxtLink to="/activities" @click="closeMenu">Activities</NuxtLink>
-        <NuxtLink to="/teachers" @click="closeMenu">Our teachers</NuxtLink>
+        <NuxtLink
+          to="/activities"
+          @click="closeMenu"
+          :class="{ 'active-parent': isActivitiesActive }"
+        >Activities</NuxtLink>
+        <NuxtLink
+          to="/teachers"
+          @click="closeMenu"
+          :class="{ 'active-parent': isTeachersActive }"
+        >Our teachers</NuxtLink>
         <NuxtLink to="/about" @click="closeMenu">About us</NuxtLink>
         <NuxtLink to="/contact" @click="closeMenu">Contact us</NuxtLink>
       </nav>
@@ -22,7 +30,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useRoute } from 'vue-router'
 import logo from '/images/logo.png'
 
 const menuOpen = ref(false)
@@ -32,6 +41,12 @@ function toggleMenu() {
 function closeMenu() {
   menuOpen.value = false
 }
+
+const route = useRoute()
+// Activities: highlight if we are on /activities or any subpage (e.g., /activities/classes)
+const isActivitiesActive = computed(() => route.path.startsWith('/activities'))
+// Teachers: highlight if we are on /teachers or any subpage (e.g., /teachers/profile)
+const isTeachersActive = computed(() => route.path.startsWith('/teachers'))
 </script>
 
 <style scoped>
@@ -97,6 +112,14 @@ function closeMenu() {
 .menu a:hover {
   color: var(--C01);
   background: var(--C04);
+}
+
+.menu a.router-link-active {
+  color: var(--C06) !important;
+}
+
+.menu a.active-parent {
+  color: var(--C06) !important;
 }
 
 /* Hamburger menu hidden on desktop */
@@ -172,6 +195,7 @@ function closeMenu() {
     flex-wrap: nowrap;
     overflow-x: visible;
   }
+
   .menu.open {
     display: flex;
   }
