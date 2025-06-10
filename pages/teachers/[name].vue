@@ -1,5 +1,17 @@
 <template>
   <div>
+    <div style="margin-top: 2rem; margin-left: 2rem;">
+      <Breadcrumbs :crumbs="breadcrumbs" />
+    </div>
+    <div style= "margin-top: 1rem; margin-left: 2rem;">
+      <NuxtLink
+        v-if="fromActivity"
+        :to="`/activities/classes/${encodeURIComponent(fromActivity)}`"
+        class="text-sm text-gray-600 hover:text-black hover:underline ml-6"
+      >
+        ← Back to {{ fromActivity }}
+      </NuxtLink>
+    </div>
     <h1 v-if="pending">Loading...</h1>
     <h1 class="name" v-else>
       {{ teacher && teacher.name ? teacher.name : "Teacher not found" }}
@@ -26,6 +38,7 @@ import WhoCard from "~/components/WhoCard.vue";
 import WhenCard from "~/components/WhenCard.vue";
 
 const route = useRoute();
+const fromActivity = computed(() => route.query.fromActivity);
 const {
   data: teacherArr,
   pending,
@@ -49,6 +62,12 @@ const { data: activities } = await useAsyncData("activitiesByTeacher", () =>
       })
     : []
 );
+
+const breadcrumbs = computed(() => [
+  { name: 'Home ', link: '/' },
+  { name: ' Our teachers ', link: '/teachers' },
+  { name: teacher.value?.name || 'Loading...', link: route.fullPath }
+]);
 </script>
 
 <style scoped>
