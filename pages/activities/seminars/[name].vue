@@ -1,11 +1,31 @@
 <template>
-  <div>
     <img
       v-if="seminar && seminar.pic"
       :src="seminar.pic"
       alt="Seminar Image"
       class="class-image"
     />
+    <div>
+    <div style="margin-top: 2rem; margin-left: 2rem;">
+    <Breadcrumbs :crumbs="breadcrumbs" />
+    </div>
+    <div v-if="cameFromHighlights" style= "margin-top: 1rem; margin-left: 2rem;">
+      <NuxtLink
+        to="/highlights"
+        class="text-sm text-gray-600 hover:text-black hover:underline"
+      >
+        ← Highlights
+      </NuxtLink>
+    </div>
+    <div style= "margin-top: 1rem; margin-left: 2rem;">
+      <NuxtLink
+         v-if="fromActivity"
+        :to="`/activities/seminars/${encodeURIComponent(fromActivity)}`"
+        class="text-sm text-gray-600 hover:text-black hover:underline"
+      >
+        ← Back to {{ fromActivity }}
+      </NuxtLink>
+    </div>
     <h1 v-if="pending">Loading...</h1>
     <h1 class="name" v-else>
       {{ seminar && seminar.name ? seminar.name : "Seminar not found" }}
@@ -16,7 +36,7 @@
       :description="seminar.description"
     />
     <div v-if="teachers && teachers.length && seminar" class="info-row">
-      <WhoCard v-if="teachers && teachers.length" :teachers="teachers" />
+      <WhoCard v-if="teachers && teachers.length" :teachers="teachers" :fromActivity="seminar?.name"/>
       <WhenCard :date="seminar.when" :time="seminar.time" />
     </div>
   </div>
@@ -49,6 +69,15 @@ const { data: teachers } = await useAsyncData("teachersForSeminar", () =>
       })
     : []
 );
+
+const cameFromHighlights = computed(() => route.query.from === 'highlights');
+
+const breadcrumbs = computed(() => [
+  { name: ' Home ', link: '/' },
+  { name: ' Activities ', link: '/activities' },
+  { name: ' Seminars ', link: '/activities/seminars' },
+  { name: seminar.value?.name || 'Loading...', link: route.fullPath }
+]);
 </script>
 
 <style scoped>
