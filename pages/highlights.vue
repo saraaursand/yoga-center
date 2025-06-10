@@ -8,6 +8,9 @@
       />
     </div>
     <h1 class="highlights-header">Highlights</h1>
+    <div class="highlights-subheader">
+      <h2 class="highlights-subheader">Try some of our most popular activities!</h2>
+    </div>
     <div class="highlights-grid">
       <HighlightCard v-for="activity in highlights" :key="activity.id"
       :name="activity.name" :pic="activity.pic" :type="activity.type" />
@@ -62,6 +65,10 @@ const {
   max-width: 1200px;
   margin: 0 auto 2rem auto;
   padding: 0 1rem;
+}
+
+.highlights-subheader {
+  text-align: center;
 }
 
 @media (max-width: 600px) {
