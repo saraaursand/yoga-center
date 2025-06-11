@@ -11,7 +11,7 @@
         <h1 class="home-title">WELCOME TO SHATMI MANDIR</h1>
         <p>
           Find your balance, strength, and inner peace in a space designed for mindfulness and movement.
-          Whether you're new to yoga or deepening your practice, our classes offer a sanctuary to breathe,
+          Whether you're new to yoga or deepening your practice, Shatmi Mandir offers a sanctuary to breathe,
           flow, and grow. Join our warm and welcoming community and experience the transformative power of yoga.
         </p>
         <NuxtLink to="/highlights" class="book-button">
@@ -48,7 +48,7 @@
   width: 100%;
   color: #111;
   z-index: 10;
-  font-size: 1.8rem;
+  font-size: 1.75rem;
   border-radius: 0.75rem;
   text-align: center;
   
