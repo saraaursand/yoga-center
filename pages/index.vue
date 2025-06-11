@@ -86,7 +86,7 @@
   .home-text-box {
     position: absolute;
     top: 50%;
-    right: 1rem;
+    right: 0;
     transform: translateY(-50%);
     text-align: center;
     line-height: 1.3;
