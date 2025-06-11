@@ -8,6 +8,7 @@
       />
 
       <div class="home-text-box">
+        <h1 class="home-title">WELCOME TO SHATMI MANDIR</h1>
         <p>
           Find your balance, strength, and inner peace in a space designed for mindfulness and movement.
           Whether you're new to yoga or deepening your practice, our classes offer a sanctuary to breathe,
@@ -47,27 +48,40 @@
   width: 100%;
   color: #111;
   z-index: 10;
-  font-size: 2rem;
+  font-size: 1.8rem;
   border-radius: 0.75rem;
   text-align: center;
+  
+}
+
+.home-title {
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
+  font-family: 'Georgia', serif;
 }
 
 /* Mobil (tekst under bildet) */
 @media (max-width: 767px) {
   .home-text-box {
     position: static;
-    margin: 3rem auto 0 auto;
+    margin: 2rem auto 0 auto;
     text-align: center;
-    height: 25rem;
+    height: 30rem;
     max-width: 80%;
     font-size: 1.5rem;
     line-height: 1.3;
   }
 
+  .home-title {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  font-family: 'Georgia', serif;
+  }
   .book-button {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2rem;
+    margin-top: 1rem;
     padding: 1rem 2.5rem;
     background-color: #b9c9b7;
     border: none;
@@ -89,14 +103,14 @@
     right: 0;
     transform: translateY(-50%);
     text-align: center;
-    line-height: 1.3;
+    line-height: 1.4;
     height:39vw;
     background-color: rgba(255, 255, 255, 0.75);
     
   }
 
   .book-button {
-    margin-top: 1.5rem;
+    margin-top: 2.5rem;
     padding: 1.2rem 2rem;
     background-color: #b9c9b7;
     border: none;
