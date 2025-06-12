@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div style="margin-top: 2rem; margin-left: 2rem; ">
+      <Breadcrumbs :crumbs="breadcrumbs" />
+    </div>
     <h1 class="title">Our seminars</h1>
     <div v-for="(seminar, idx) in seminars" :key="seminar.id">
       <NuxtLink
@@ -25,6 +28,12 @@ import IntroCard from "~/components/IntroCard.vue";
 const { data: seminars } = await useAsyncData("seminars", () =>
   $fetch("/api/seminars/seminarsAll")
 );
+
+const breadcrumbs = [
+  { name: ' Home ', link: '/' },
+  { name: ' Activities ', link: '/activities' },
+  { name: ' Our seminars ', link: '/activities/seminars' }
+];
 </script>
 
 <style scoped>

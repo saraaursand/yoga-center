@@ -6,6 +6,9 @@
         src="https://urexuitkakjvttquebyb.supabase.co/storage/v1/object/sign/activities-pics/outActivities.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84ODFmYjQwZS0wZmI2LTRiY2ItODU1OC1hNzQwNjVmNzk1MTAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhY3Rpdml0aWVzLXBpY3Mvb3V0QWN0aXZpdGllcy5wbmciLCJpYXQiOjE3NDk0ODIyODUsImV4cCI6MTc4MTAxODI4NX0.xE44kg2D9GltPewUWIKqL0_4SK5-rRf3c7QGVSxPMR0"
         alt="Our Activities"
       />
+    <div style="margin-top: 2rem; margin-left: 2rem; ">
+      <Breadcrumbs :crumbs="breadcrumbs" />
+    </div>
     </div>
     <h1 class="title">Our Activities</h1>
     <div class="activity-buttons-row">
@@ -32,6 +35,13 @@
     </div>
   </div>
 </template>
+
+<script setup>
+const breadcrumbs = [
+  { name: 'Home ', link: '/' },
+  { name: ' Activities', link: '/activities' }
+];
+</script>
 
 <style scoped>
 .activities-image-wrapper {

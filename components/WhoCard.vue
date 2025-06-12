@@ -32,7 +32,12 @@ const props = defineProps({
     type: String,
     default: "WHO",
   },
+  fromActivity: {
+  type: String,
+  default: null
+  }
 });
+
 function getLink(item) {
   if (props.linkType === "activity") {
     if (item.type === "seminar") {
@@ -40,8 +45,13 @@ function getLink(item) {
     }
     return `/activities/classes/${encodeURIComponent(item.name)}`;
   }
-  return `/teachers/${encodeURIComponent(item.name)}`;
+ let base = `/teachers/${encodeURIComponent(item.name)}`;
+  if (props.fromActivity) {
+    base += `?fromActivity=${encodeURIComponent(props.fromActivity)}`;
+  }
+  return base;
 }
+
 </script>
 
 <style scoped>

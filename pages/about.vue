@@ -6,6 +6,9 @@
         src="/images/aboutus.jpg"
         alt="Mindfulness and Meditation"
       />
+    <div style="margin-top: 2rem; margin-left: 2rem; ">
+      <Breadcrumbs :crumbs="breadcrumbs" />
+    </div>
     </div>
     <div class="about-us-content-wrapper">
       <h1 class="about-us-header">About us</h1>
@@ -22,6 +25,13 @@
     </div>
   </div>
 </template>
+
+<script setup>
+const breadcrumbs = [
+  { name: 'Home ', link: '/' },
+  { name: ' About us', link: '/about' }
+];
+</script>
 
 <style scoped>
 .about-us-image-wrapper {
