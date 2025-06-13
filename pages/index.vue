@@ -39,7 +39,7 @@
   display: block;
 }
 
-/* Felles stil for tekstboksen */
+/* General styling textbox */
 .home-text-box {
   background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -62,7 +62,7 @@
   font-family: 'Georgia', serif;
 }
 
-/* Mobil (tekst under bildet) */
+/* Mobil */
 @media (max-width: 767px) {
   .home-text-box {
     position: static;
@@ -95,7 +95,7 @@
   }
 }
 
-/* Desktop (tekst over bildet) */
+/* Desktop */
 @media (min-width: 768px) {
   .home-text-box {
     position: absolute;
