@@ -5,6 +5,7 @@ const supabaseAnonKey = process.env.NUXT_PUBLIC_SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 export default defineEventHandler(async (event) => {
+  // Get teacher name and activity type from query parameters
   const { name, type } = getQuery(event);
   if (!name) {
     throw createError({
@@ -13,7 +14,7 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  // 1. Get the teacher id
+  // 1. Get the teacher's ID from the teachers table
   const { data: teacher, error: teacherError } = await supabase
     .from("teachers")
     .select("id")
@@ -24,12 +25,14 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 404, statusMessage: "Teacher not found" });
   }
 
-  // 2. Get all activities for this teacher
+  // 2. Query the teacher_activity join table for activities linked to this teacher
+  //    Also join the activities table to get full activity details
   let activityLinksQuery = supabase
     .from("teacher_activity")
     .select("activity_id, activities(*)")
     .eq("teacher_id", teacher.id);
 
+  // Filter activities by type 
   if (type) {
     activityLinksQuery = activityLinksQuery.eq("activities.type", type);
   }
@@ -44,6 +47,6 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  // 3. Return the activities info
+  // 3. Return an array of activity objects for this teacher
   return activityLinks.map((link) => link.activities);
 });
