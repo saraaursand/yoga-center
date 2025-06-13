@@ -1,4 +1,5 @@
 <template>
+  <!-- Main layout with header, content, and footer -->
   <div class="layout">
     <Header />
     <main class="content">
@@ -9,6 +10,7 @@
 </template>
 
 <script setup>
+// Import layout and page components
 import Header from '~/components/Header.vue'
 import IntroCard from '~/components/IntroCard.vue'
 import DescriptionCard from '~/components/DescriptionCard.vue'
@@ -16,6 +18,7 @@ import Footer from '~/components/Footer.vue'
 </script>
 
 <style scoped>
+/* Layout and responsive spacing for header/content/footer */
 .layout {
   display: flex;
   flex-direction: column;
