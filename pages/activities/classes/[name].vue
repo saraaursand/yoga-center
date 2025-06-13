@@ -7,32 +7,41 @@
       class="class-image"
     />
 
+    <!-- Breadcrumb navigation -->
     <div style="margin-top: 2rem; margin-left: 2rem">
       <Breadcrumbs :crumbs="breadcrumbs" />
     </div>
+
+     <!-- Back link to highlights if user came from that page -->
     <div v-if="cameFromHighlights" style="margin-top: 1rem; margin-left: 2rem">
       <NuxtLink
         to="/highlights"
         class="text-sm text-gray-600 hover:text-black hover:underline"
       >
-        ← Back to highlights
+        ← Back to Highlights
       </NuxtLink>
     </div>
 
+    <!-- Loading state -->
     <h1 v-if="pending">Loading...</h1>
     <h1 class="name" v-else>
       {{ classItem && classItem.name ? classItem.name : "Seminar not found" }}
     </h1>
+
+    <!-- Main class description -->
     <DescriptionCard
       v-if="classItem"
       :header="`${classItem.time} - ${classItem.level}`"
       :description="classItem.description"
     />
+    
+    <!-- Teacher(s) and date/time info -->
     <div v-if="teachers && teachers.length && classItem" class="info-row">
       <WhoCard
         v-if="teachers && teachers.length"
         :teachers="teachers"
         :fromActivity="classItem?.name"
+        :fromActivityType="'class'"
       />
       <WhenCard :date="classItem.when" :time="classItem.time" />
     </div>
