@@ -5,8 +5,8 @@
     </div>
     <div style="margin-top: 1rem; margin-left: 2rem">
       <NuxtLink
-        v-if="fromActivity"
-        :to="`/activities/classes/${encodeURIComponent(fromActivity)}`"
+        v-if="fromActivity && fromActivityType"
+        :to="`/activities/${fromActivityType  === 'class' ? 'classes' : 'seminars'}/${encodeURIComponent(fromActivity)}`"
         class="text-sm text-gray-600 hover:text-black hover:underline ml-6"
       >
         ← Back to {{ fromActivity }}
@@ -41,6 +41,7 @@ const route = useRoute();
 
 // Get the activity name from the query parameter (if coming from an activity page)
 const fromActivity = computed(() => route.query.fromActivity);
+const fromActivityType = route.query.fromActivityType;
 
 // Fetch teacher data by name from the API
 const {
@@ -57,7 +58,7 @@ const teacher = computed(() =>
   teacherArr.value && teacherArr.value.length ? teacherArr.value[0] : null
 );
 
-// Fetch activities  this teacher is responsible for
+// Fetch activities this teacher is responsible for
 const { data: activities } = await useAsyncData("activitiesByTeacher", () =>
   teacher.value && teacher.value.name
     ? $fetch("/api/activities/activityByTeacher", {
