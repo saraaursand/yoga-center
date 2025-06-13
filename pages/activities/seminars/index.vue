@@ -1,8 +1,10 @@
 <template>
   <div>
+    <!-- Breadcrumb navigation -->
     <div style="margin-top: 2rem; margin-left: 2rem">
       <Breadcrumbs :crumbs="breadcrumbs" />
     </div>
+    
     <h1 class="title">Our seminars</h1>
     <div v-for="(seminar, idx) in seminars" :key="seminar.id">
       <NuxtLink

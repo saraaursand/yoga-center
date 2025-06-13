@@ -6,17 +6,22 @@
     class="class-image"
   />
   <div>
+    <!-- Breadcrumb navigation -->
     <div style="margin-top: 2rem; margin-left: 2rem">
       <Breadcrumbs :crumbs="breadcrumbs" />
     </div>
+
+     <!-- Back link to highlights if user came from that page -->
     <div v-if="cameFromHighlights" style="margin-top: 1rem; margin-left: 2rem">
       <NuxtLink
         to="/highlights"
         class="text-sm text-gray-600 hover:text-black hover:underline"
       >
-        ← Highlights
+        ← Back to Highlights
       </NuxtLink>
     </div>
+
+    <!-- Back link to the specific seminar activity if available -->
     <div style="margin-top: 1rem; margin-left: 2rem">
       <NuxtLink
         v-if="fromActivity"
@@ -26,20 +31,27 @@
         ← Back to {{ fromActivity }}
       </NuxtLink>
     </div>
+
+    <!-- Loading state -->
     <h1 v-if="pending">Loading...</h1>
     <h1 class="name" v-else>
       {{ seminar && seminar.name ? seminar.name : "Seminar not found" }}
     </h1>
+
+    <!-- Main seminar description -->
     <DescriptionCard
       v-if="seminar"
       :header="`${seminar.time} - ${seminar.level}`"
       :description="seminar.description"
     />
+
+    <!-- Teacher(s) and date/time info -->
     <div v-if="teachers && teachers.length && seminar" class="info-row">
       <WhoCard
         v-if="teachers && teachers.length"
         :teachers="teachers"
         :fromActivity="seminar?.name"
+        :fromActivityType="'seminar'"
       />
       <WhenCard :date="seminar.when" :time="seminar.time" />
     </div>
@@ -47,12 +59,14 @@
 </template>
 
 <script setup>
+// Imports
 import { useAsyncData, useRoute } from "nuxt/app";
 import { computed } from "vue";
 import DescriptionCard from "~/components/DescriptionCard.vue";
 import WhoCard from "~/components/WhoCard.vue";
 import WhenCard from "~/components/WhenCard.vue";
 
+// Current route info
 const route = useRoute();
 
 // Fetch seminar data by name from the API
@@ -69,7 +83,7 @@ const seminar = computed(() =>
   seminarArr.value && seminarArr.value.length ? seminarArr.value[0] : null
 );
 
-// Fetch teachers for this seminar using the seminar name
+// Fetch teachers connected to this seminar using the seminar name
 const { data: teachers } = await useAsyncData("teachersForSeminar", () =>
   seminar.value && seminar.value.name
     ? $fetch("/api/teacher/byActivity", {
@@ -78,14 +92,14 @@ const { data: teachers } = await useAsyncData("teachersForSeminar", () =>
     : []
 );
 
-// Check if the user navigated from the highlights page
+// Detect if user came from highlights page
 const cameFromHighlights = computed(() => route.query.from === "highlights");
 
 // Breadcrumbs for navigation
 const breadcrumbs = computed(() => [
   { name: " Home ", link: "/" },
   { name: " Activities ", link: "/activities" },
-  { name: " Seminars ", link: "/activities/seminars" },
+  { name: " Our seminars ", link: "/activities/seminars" },
   { name: seminar.value?.name || "Loading...", link: route.fullPath },
 ]);
 </script>
