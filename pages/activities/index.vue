@@ -1,17 +1,21 @@
 <template>
   <div>
+    <!-- Top banner image -->
     <div class="activities-image-wrapper">
       <img
         class="activities-image"
         src="https://urexuitkakjvttquebyb.supabase.co/storage/v1/object/sign/activities-pics/outActivities.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84ODFmYjQwZS0wZmI2LTRiY2ItODU1OC1hNzQwNjVmNzk1MTAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhY3Rpdml0aWVzLXBpY3Mvb3V0QWN0aXZpdGllcy5wbmciLCJpYXQiOjE3NDk0ODIyODUsImV4cCI6MTc4MTAxODI4NX0.xE44kg2D9GltPewUWIKqL0_4SK5-rRf3c7QGVSxPMR0"
         alt="Our Activities"
       />
-    <div style="margin-top: 2rem; margin-left: 2rem; ">
-      <Breadcrumbs :crumbs="breadcrumbs" />
-    </div>
+      <!-- Breadcrumb navigation -->
+      <div style="margin-top: 2rem; margin-left: 2rem">
+        <Breadcrumbs :crumbs="breadcrumbs" />
+      </div>
     </div>
     <h1 class="title">Our Activities</h1>
+    <!-- Activity buttons for classes and seminars -->
     <div class="activity-buttons-row">
+      <!-- Link to classes page -->
       <NuxtLink to="/activities/classes">
         <div
           class="activity-image-btn"
@@ -22,6 +26,7 @@
           <button class="activity-btn">CLASSES</button>
         </div>
       </NuxtLink>
+      <!-- Link to seminars page -->
       <NuxtLink to="/activities/seminars">
         <div
           class="activity-image-btn"
@@ -37,9 +42,10 @@
 </template>
 
 <script setup>
+// Breadcrumbs for navigation
 const breadcrumbs = [
-  { name: 'Home ', link: '/' },
-  { name: ' Activities', link: '/activities' }
+  { name: "Home ", link: "/" },
+  { name: " Activities", link: "/activities" },
 ];
 </script>
 

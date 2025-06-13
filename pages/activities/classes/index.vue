@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="margin-top: 2rem; margin-left: 2rem; ">
+    <div style="margin-top: 2rem; margin-left: 2rem">
       <Breadcrumbs :crumbs="breadcrumbs" />
     </div>
     <h1 class="title">Our classes</h1>
@@ -24,15 +24,16 @@
 import { useAsyncData } from "nuxt/app";
 import IntroCard from "~/components/IntroCard.vue";
 
-// Fetch classes from the API for SSR
+// Fetch all classes from the API for SSR
 const { data: classes } = await useAsyncData("classes", () =>
   $fetch("/api/classes/classesAll")
 );
 
+// Breadcrumbs for navigation
 const breadcrumbs = computed(() => [
-  { name: 'Home ', link: '/' },
-  { name: ' Activites ', link: '/activities' },
-  { name: ' Our classes ', link: '/activities/classes' },
+  { name: "Home ", link: "/" },
+  { name: " Activites ", link: "/activities" },
+  { name: " Our classes ", link: "/activities/classes" },
 ]);
 </script>
 

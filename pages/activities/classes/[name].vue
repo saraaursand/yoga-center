@@ -6,11 +6,11 @@
       alt="Class Image"
       class="class-image"
     />
-    
-    <div style="margin-top: 2rem; margin-left: 2rem; ">
+
+    <div style="margin-top: 2rem; margin-left: 2rem">
       <Breadcrumbs :crumbs="breadcrumbs" />
     </div>
-    <div v-if="cameFromHighlights" style= "margin-top: 1rem; margin-left: 2rem;">
+    <div v-if="cameFromHighlights" style="margin-top: 1rem; margin-left: 2rem">
       <NuxtLink
         to="/highlights"
         class="text-sm text-gray-600 hover:text-black hover:underline"
@@ -29,7 +29,11 @@
       :description="classItem.description"
     />
     <div v-if="teachers && teachers.length && classItem" class="info-row">
-      <WhoCard v-if="teachers && teachers.length" :teachers="teachers" :fromActivity="classItem?.name" />
+      <WhoCard
+        v-if="teachers && teachers.length"
+        :teachers="teachers"
+        :fromActivity="classItem?.name"
+      />
       <WhenCard :date="classItem.when" :time="classItem.time" />
     </div>
   </div>
@@ -42,9 +46,12 @@ import DescriptionCard from "~/components/DescriptionCard.vue";
 import WhoCard from "~/components/WhoCard.vue";
 import WhenCard from "~/components/WhenCard.vue";
 
-
 const route = useRoute();
-const cameFromHighlights = computed(() => route.query.from === 'highlights');
+
+// Check if the user navigated from the highlights page
+const cameFromHighlights = computed(() => route.query.from === "highlights");
+
+// Fetch class data by name from the API
 const {
   data: classArr,
   pending,
@@ -58,6 +65,7 @@ const classItem = computed(() =>
   classArr.value && classArr.value.length ? classArr.value[0] : null
 );
 
+// Fetch teachers for this class using the class name
 const { data: teachers } = await useAsyncData("teachersForClass", () =>
   classItem.value && classItem.value.name
     ? $fetch("/api/teacher/byActivity", {
@@ -66,13 +74,13 @@ const { data: teachers } = await useAsyncData("teachersForClass", () =>
     : []
 );
 
+// Breadcrumbs for navigation
 const breadcrumbs = computed(() => [
-  { name: 'Home ', link: '/' },
-  { name: ' Activites ', link: '/activities' },
-  { name: ' Our classes ', link: '/activities/classes' },
-  { name: classItem.value?.name || 'Laster...', link: route.fullPath }
+  { name: "Home ", link: "/" },
+  { name: " Activites ", link: "/activities" },
+  { name: " Our classes ", link: "/activities/classes" },
+  { name: classItem.value?.name || "Laster...", link: route.fullPath },
 ]);
-
 </script>
 
 <style scoped>

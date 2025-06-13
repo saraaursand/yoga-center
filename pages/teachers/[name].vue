@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div style="margin-top: 2rem; margin-left: 2rem;">
+    <div style="margin-top: 2rem; margin-left: 2rem">
       <Breadcrumbs :crumbs="breadcrumbs" />
     </div>
-    <div style= "margin-top: 1rem; margin-left: 2rem;">
+    <div style="margin-top: 1rem; margin-left: 2rem">
       <NuxtLink
         v-if="fromActivity"
         :to="`/activities/classes/${encodeURIComponent(fromActivity)}`"
@@ -38,7 +38,11 @@ import WhoCard from "~/components/WhoCard.vue";
 import WhenCard from "~/components/WhenCard.vue";
 
 const route = useRoute();
+
+// Get the activity name from the query parameter (if coming from an activity page)
 const fromActivity = computed(() => route.query.fromActivity);
+
+// Fetch teacher data by name from the API
 const {
   data: teacherArr,
   pending,
@@ -48,13 +52,12 @@ const {
   $fetch(`/api/teacher/${encodeURIComponent(route.params.name)}`)
 );
 
+// The API returns an array, so take the first teacher if available
 const teacher = computed(() =>
-  // The API returns an array of teachers (even when searching by name),
-  // so we take the first teacher from the array if available, otherwise return null
   teacherArr.value && teacherArr.value.length ? teacherArr.value[0] : null
 );
 
-// Fetch activities (classes/seminars) this teacher is responsible for
+// Fetch activities  this teacher is responsible for
 const { data: activities } = await useAsyncData("activitiesByTeacher", () =>
   teacher.value && teacher.value.name
     ? $fetch("/api/activities/activityByTeacher", {
@@ -63,10 +66,11 @@ const { data: activities } = await useAsyncData("activitiesByTeacher", () =>
     : []
 );
 
+// Breadcrumbs for navigation
 const breadcrumbs = computed(() => [
-  { name: 'Home ', link: '/' },
-  { name: ' Our teachers ', link: '/teachers' },
-  { name: teacher.value?.name || 'Loading...', link: route.fullPath }
+  { name: "Home ", link: "/" },
+  { name: " Our teachers ", link: "/teachers" },
+  { name: teacher.value?.name || "Loading...", link: route.fullPath },
 ]);
 </script>
 
