@@ -1,4 +1,5 @@
 <template>
+  <!-- About Us page with header image, breadcrumbs, and content -->
   <div>
     <div class="about-us-image-wrapper">
       <img
@@ -6,9 +7,9 @@
         src="/images/aboutus.jpg"
         alt="Mindfulness and Meditation"
       />
-    <div style="margin-top: 2rem; margin-left: 2rem; ">
-      <Breadcrumbs :crumbs="breadcrumbs" />
-    </div>
+      <div style="margin-top: 2rem; margin-left: 2rem; ">
+        <Breadcrumbs :crumbs="breadcrumbs" />
+      </div>
     </div>
     <div class="about-us-content-wrapper">
       <h1 class="about-us-header">About us</h1>
@@ -27,6 +28,7 @@
 </template>
 
 <script setup>
+// Breadcrumbs for navigation
 const breadcrumbs = [
   { name: 'Home ', link: '/' },
   { name: ' About us', link: '/about' }
@@ -34,6 +36,7 @@ const breadcrumbs = [
 </script>
 
 <style scoped>
+/* Styles for About Us image, content, and responsive layout */
 .about-us-image-wrapper {
   width: 100vw;
   min-width: 100vw;
@@ -111,6 +114,8 @@ const breadcrumbs = [
     padding: 0 2vw;
   }
 }
+
+/* Layout for mobile device*/
 
 @media (max-width: 600px) {
   .about-us-content-wrapper {

@@ -1,4 +1,5 @@
-<template>
+<template> 
+  <!-- Responsive header with logo, nav links, and hamburger menu -->
   <header :class="['header', { 'menu-open': menuOpen }]">
     <div class="header-inner">
       <NuxtLink to="/" class="logo">
@@ -30,6 +31,7 @@
 </template>
 
 <script setup>
+// Imports and state for menu logic and active nav highlighting
 import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import logo from '/images/logo.png'
@@ -48,18 +50,19 @@ const isTeachersActive = computed(() => route.path.startsWith('/teachers'))
 </script>
 
 <style scoped>
+/* Header, nav, and hamburger styles for desktop and mobile */
 .header {
   background-color: var(--C02);
   padding: 0;
   font-size: var(--MENU);
   font-family: var(--FONT);
-  position: fixed;      /* <--- FIXED HEADER */
-  z-index: 1000;        /* <--- Always on top */
+  position: fixed;      
+  z-index: 1000;        
   width: 100%;
-  top: 0;               /* <--- Stick to top */
+  top: 0;           
   left: 0;
   right: 0;
-  height: 80px;         /* Desktop height */
+  height: 80px;         
 }
 
 .header-inner {
@@ -156,9 +159,11 @@ const isTeachersActive = computed(() => route.path.startsWith('/teachers'))
   transform: translateY(-9px) rotate(-45deg);
 }
 
+/* Layout for smaller screen withs */
+
 @media (max-width: 900px) {
   .header {
-    height: 64px;      /* Mobile header height */
+    height: 64px;     
   }
   .header-inner {
     padding-left: 10px;
