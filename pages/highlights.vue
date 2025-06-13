@@ -1,22 +1,32 @@
 <template>
   <div>
+    <!-- Top banner image for the highlights page -->
     <div class="highlights-image-wrapper">
       <img
         class="highlights-image"
         src="https://urexuitkakjvttquebyb.supabase.co/storage/v1/object/sign/activities-pics/highlights.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84ODFmYjQwZS0wZmI2LTRiY2ItODU1OC1hNzQwNjVmNzk1MTAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhY3Rpdml0aWVzLXBpY3MvaGlnaGxpZ2h0cy5wbmciLCJpYXQiOjE3NDk0ODIwMzMsImV4cCI6MTc4MTAxODAzM30.iNBS5Pv7HoaUTTutuKxkaUc501TBhimfJMa65NLd9Fg"
         alt="Highlights"
       />
-    <div style="margin-top: 2rem; margin-left: 2rem; ">
-      <Breadcrumbs :crumbs="breadcrumbs" />
-    </div>
+      <!-- Breadcrumb navigation -->
+      <div style="margin-top: 2rem; margin-left: 2rem">
+        <Breadcrumbs :crumbs="breadcrumbs" />
+      </div>
     </div>
     <h1 class="highlights-header">Highlights</h1>
     <div class="highlights-subheader">
-      <h2 class="highlights-subheader">Try some of our most popular activities!</h2>
+      <h2 class="highlights-subheader">
+        Try some of our most popular activities!
+      </h2>
     </div>
+    <!-- Responsive grid of highlight cards -->
     <div class="highlights-grid">
-      <HighlightCard v-for="activity in highlights" :key="activity.id"
-      :name="activity.name" :pic="activity.pic" :type="activity.type" />
+      <HighlightCard
+        v-for="activity in highlights"
+        :key="activity.id"
+        :name="activity.name"
+        :pic="activity.pic"
+        :type="activity.type"
+      />
     </div>
   </div>
 </template>
@@ -25,6 +35,7 @@
 import { useAsyncData } from "nuxt/app";
 import HighlightCard from "~/components/HighlightCard.vue";
 
+// Fetch all highlighted activities from the API
 const {
   data: highlights,
   pending,
@@ -33,9 +44,10 @@ const {
   $fetch("/api/activities/highlights")
 );
 
+// Breadcrumbs for navigation
 const breadcrumbs = [
-  { name: 'Home ', link: '/' },
-  { name: ' Highlights', link: '/highlights' }
+  { name: "Home ", link: "/" },
+  { name: " Highlights", link: "/highlights" },
 ];
 </script>
 

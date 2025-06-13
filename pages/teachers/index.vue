@@ -1,15 +1,17 @@
 <template>
   <div>
-    <div style="margin-top: 2rem; margin-left: 2rem; ">
+    <!-- Breadcrumb navigation -->
+    <div style="margin-top: 2rem; margin-left: 2rem">
       <Breadcrumbs :crumbs="breadcrumbs" />
     </div>
     <h1 class="title">Our teachers</h1>
+    <!-- List all teachers using IntroCard, alternating image position -->
     <div v-for="(teacher, idx) in teachers" :key="teacher.id">
       <NuxtLink
         :to="`/teachers/${encodeURIComponent(teacher.name)}`"
         style="text-decoration: none"
       >
-        <!--Encode to handle spaces in name -->
+        <!-- Encode to handle spaces in name -->
         <IntroCard
           :imgSrc="teacher.pic"
           :header="teacher.name"
@@ -25,14 +27,15 @@
 import { useAsyncData } from "nuxt/app";
 import IntroCard from "~/components/IntroCard.vue";
 
-// Get all teachers from the API
+// Get all teachers from the API for server-side rendering
 const { data: teachers } = await useAsyncData("teachers", () =>
   $fetch("/api/teacher/teachersAll")
 );
 
+// Breadcrumbs for navigation
 const breadcrumbs = [
-  { name: 'Home ', link: '/' },
-  { name: ' Our teachers', link: '/teachers' }
+  { name: "Home ", link: "/" },
+  { name: " Our teachers", link: "/teachers" },
 ];
 </script>
 
