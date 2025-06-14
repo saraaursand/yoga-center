@@ -44,8 +44,8 @@
         :fromActivityType="'class'"
       />
       <ShortTextCard 
-        :primaryText="classItem.primaryText" 
-        :secondaryText="classItem.secondaryText" 
+        :primaryText="classItem.when" 
+        :secondaryText="classItem.time" 
       />
     </div>
   </div>
