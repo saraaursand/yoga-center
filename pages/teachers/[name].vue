@@ -1,8 +1,11 @@
 <template>
   <div>
+    <!-- Breadcrumb navigation -->
     <div style="margin-top: 2rem; margin-left: 2rem">
       <Breadcrumbs :crumbs="breadcrumbs" />
     </div>
+
+    <!-- Back link -->
     <div style="margin-top: 1rem; margin-left: 2rem">
       <NuxtLink
         v-if="fromActivity && fromActivityType"
@@ -12,10 +15,7 @@
         ← Back to {{ fromActivity }}
       </NuxtLink>
     </div>
-    <h1 v-if="pending">Loading...</h1>
-    <h1 class="name" v-else>
-      {{ teacher && teacher.name ? teacher.name : "Teacher not found" }}
-    </h1>
+    
     <img
       v-if="teacher && teacher.pic"
       :src="teacher.pic"
@@ -24,7 +24,7 @@
     />
     <DescriptionCard v-if="teacher" header="CV" :description="teacher.CV" />
     <div v-if="activities && activities.length && teacher" class="info-row">
-      <ResponsibilityCard :responsibilities="activities" linkType="activity" header="ACTIVITIES" />
+      <ResponsibilityCard :responsibilities="activities" linkType="activity" header="ACTIVITIES" :fromTeacher="teacher?.name"/>
       <ShortTextCard header="ABOUT" :primaryText="teacher.about" :secondaryText="''" />
     </div>
   </div>
