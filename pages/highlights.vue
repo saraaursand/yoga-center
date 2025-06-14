@@ -8,7 +8,7 @@
         alt="Highlights"
       />
       <!-- Breadcrumb navigation -->
-      <div style="margin-top: 2rem; margin-left: 2rem">
+      <div style="margin-top: 2rem; margin-left: 2rem;">
         <Breadcrumbs :crumbs="breadcrumbs" />
       </div>
     </div>
@@ -47,7 +47,7 @@ const {
 // Breadcrumbs for navigation
 const breadcrumbs = [
   { name: "Home ", link: "/" },
-  { name: " Highlights", link: "/highlights" },
+  { name: " Highlights" },
 ];
 </script>
 

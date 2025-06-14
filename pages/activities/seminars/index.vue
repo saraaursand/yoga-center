@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Breadcrumb navigation -->
-    <div style="margin-top: 2rem; margin-left: 2rem">
+    <div style="margin-top: 2rem; margin-left: 2rem;">
       <Breadcrumbs :crumbs="breadcrumbs" />
     </div>
     
@@ -35,7 +35,7 @@ const { data: seminars } = await useAsyncData("seminars", () =>
 const breadcrumbs = [
   { name: " Home ", link: "/" },
   { name: " Activities ", link: "/activities" },
-  { name: " Our seminars ", link: "/activities/seminars" },
+  { name: " Our seminars " },
 ];
 </script>
 

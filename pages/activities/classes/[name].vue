@@ -12,13 +12,22 @@
       <Breadcrumbs :crumbs="breadcrumbs" />
     </div>
 
-     <!-- Back link to highlights if user came from that page -->
+     <!-- Back links -->
     <div v-if="cameFromHighlights" style="margin-top: 1rem; margin-left: 2rem">
       <NuxtLink
         to="/highlights"
         class="text-sm text-gray-600 hover:text-black hover:underline"
       >
         ← Back to Highlights
+      </NuxtLink>
+    </div>
+
+    <div v-if="fromTeacher" style="margin-top: 1rem; margin-left: 2rem">
+      <NuxtLink
+        :to="`/teachers/${encodeURIComponent(fromTeacher)}`"
+        class="text-sm text-gray-600 hover:text-black hover:underline ml-6"
+      >
+        ← Back to {{ fromTeacher }}
       </NuxtLink>
     </div>
 
@@ -62,6 +71,7 @@ const route = useRoute();
 
 // Check if the user navigated from the highlights page
 const cameFromHighlights = computed(() => route.query.from === "highlights");
+const fromTeacher = computed(() => route.query.fromTeacher);
 
 // Fetch class data by name from the API
 const {
@@ -91,7 +101,7 @@ const breadcrumbs = computed(() => [
   { name: "Home ", link: "/" },
   { name: " Activites ", link: "/activities" },
   { name: " Our classes ", link: "/activities/classes" },
-  { name: classItem.value?.name || "Laster...", link: route.fullPath },
+  { name: classItem.value?.name || "Loading...", link: route.fullPath },
 ]);
 </script>
 

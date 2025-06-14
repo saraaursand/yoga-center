@@ -35,7 +35,7 @@ const { data: classes } = await useAsyncData("classes", () =>
 const breadcrumbs = computed(() => [
   { name: "Home ", link: "/" },
   { name: " Activites ", link: "/activities" },
-  { name: " Our classes ", link: "/activities/classes" },
+  { name: " Our classes "},
 ]);
 </script>
 
