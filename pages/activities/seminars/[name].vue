@@ -21,7 +21,7 @@
       </NuxtLink>
     </div>
 
-    <!-- Back link to the specific seminar activity if available -->
+    <!-- Back link to the specific activity/teacher -->
     <div style="margin-top: 1rem; margin-left: 2rem">
       <NuxtLink
         v-if="fromActivity"
@@ -29,6 +29,14 @@
         class="text-sm text-gray-600 hover:text-black hover:underline"
       >
         ← Back to {{ fromActivity }}
+      </NuxtLink>
+
+      <NuxtLink
+        v-if="fromTeacher"
+        :to="`/teachers/${encodeURIComponent(fromTeacher)}`"
+        class="text-sm text-gray-600 hover:text-black hover:underline ml-6"
+      >
+        ← Back to {{ fromTeacher }}
       </NuxtLink>
     </div>
 
@@ -68,6 +76,8 @@ import ShortTextCard from "~/components/ShortTextCard.vue";
 
 // Current route info
 const route = useRoute();
+// Extract teacher name from query parameters
+const fromTeacher = computed(() => route.query.fromTeacher);
 
 // Fetch seminar data by name from the API
 const {
