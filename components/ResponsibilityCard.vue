@@ -41,18 +41,28 @@ const props = defineProps({
   fromActivityType: {
   type: String,
   default: null,
+  },
+  fromTeacher: {
+  type: String,
+  default: null
+  },
+  fromTeacherType: {
+    type: String,
+    default: null
   }
 });
 
 // Returns the correct link for each teacher or activity
 function getLink(item) {
-  // If we're linking to activities instead of teachers
-  if (props.linkType === "activity") {
-    // Force seminar path if either item or origin is a seminar
-    if (item.type === "seminar" || props.fromActivityType === "seminar") {
-      return `/activities/seminars/${encodeURIComponent(item.name)}`;
+   if (props.linkType === "activity") {
+    const type = item.type === "seminar" || props.fromTeacherType === "seminar" ? "seminars" : "classes";
+    let base = `/activities/${type}/${encodeURIComponent(item.name)}`;
+
+    // Add query param to enable back-navigation
+    if (props.fromTeacher) {
+      base += `?fromTeacher=${encodeURIComponent(props.fromTeacher)}`;
     }
-    return `/activities/classes/${encodeURIComponent(item.name)}`;
+    return base;
   }
   // Default: link to teacher page
   let base = `/teachers/${encodeURIComponent(item.name)}`;
