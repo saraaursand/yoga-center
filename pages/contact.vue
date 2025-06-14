@@ -12,12 +12,12 @@
     <div class="contact-us-content-wrapper">
       <h1 class="contact-us-header">Contact Us</h1>
       <div class="contact-cards-row">
-        <ReceptionOpeningTimes
+        <ReceptionContact
           openingHours="08:00 - 16:00"
           phoneNumber="+12 34 56 78 90"
           mailAddress="reception@yogacenter.com"
         />
-        <CenterOpeningTimes
+        <CenterContact
           monFriOpeningHours="07:00 - 22:00"
           satOpeningHours="10:00 - 18:00"
           holidayOpeningHours="Closed"
