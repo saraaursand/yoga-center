@@ -22,7 +22,7 @@
       alt="Teacher Image"
       class="teacher-image"
     />
-    <DescriptionCard v-if="teacher" header="CV" :description="teacher.CV" />
+    <DescriptionContainer v-if="teacher" header="CV" :description="teacher.CV" />
     <div v-if="activities && activities.length && teacher" class="info-row">
       <ResponsibilityCard :responsibilities="activities" linkType="activity" header="ACTIVITIES" />
       <ShortTextCard header="ABOUT" :primaryText="teacher.about" :secondaryText="''" />
@@ -33,7 +33,7 @@
 <script setup>
 import { useAsyncData, useRoute } from "nuxt/app";
 import { computed } from "vue";
-import DescriptionCard from "~/components/DescriptionCard.vue";
+import DescriptionContainer from "~/components/DescriptionContainer.vue";
 import ResponsibilityCard from "~/components/ResponsibilityCard.vue";
 import ShortTextCard from "~/components/ShortTextCard.vue";
 

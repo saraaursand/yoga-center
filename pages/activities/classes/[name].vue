@@ -29,7 +29,7 @@
     </h1>
 
     <!-- Main class description -->
-    <DescriptionCard
+    <DescriptionContainer
       v-if="classItem"
       :header="`${classItem.time} - ${classItem.level}`"
       :description="classItem.description"
@@ -54,7 +54,7 @@
 <script setup>
 import { useAsyncData, useRoute } from "nuxt/app";
 import { computed } from "vue";
-import DescriptionCard from "~/components/DescriptionCard.vue";
+import DescriptionContainer from "~/components/DescriptionContainer.vue";
 import ResponsibilityCard from "~/components/ResponsibilityCard.vue";
 import ShortTextCard from "~/components/ShortTextCard.vue";
 

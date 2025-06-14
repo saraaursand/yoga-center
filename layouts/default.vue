@@ -13,7 +13,7 @@
 // Import layout and page components
 import Header from '~/components/Header.vue'
 import IntroCard from '~/components/IntroCard.vue'
-import DescriptionCard from '~/components/DescriptionCard.vue'
+import DescriptionContainer from '~/components/DescriptionContainer.vue'
 import Footer from '~/components/Footer.vue'
 </script>
 

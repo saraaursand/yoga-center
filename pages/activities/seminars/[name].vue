@@ -39,7 +39,7 @@
     </h1>
 
     <!-- Main seminar description -->
-    <DescriptionCard
+    <DescriptionContainer
       v-if="seminar"
       :header="`${seminar.time} - ${seminar.level}`"
       :description="seminar.description"
@@ -62,7 +62,7 @@
 // Imports
 import { useAsyncData, useRoute } from "nuxt/app";
 import { computed } from "vue";
-import DescriptionCard from "~/components/DescriptionCard.vue";
+import DescriptionContainer from "~/components/DescriptionContainer.vue";
 import ResponsibilityCard from "~/components/ResponsibilityCard.vue";
 import ShortTextCard from "~/components/ShortTextCard.vue";
 
