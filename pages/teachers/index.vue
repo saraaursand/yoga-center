@@ -35,7 +35,7 @@ const { data: teachers } = await useAsyncData("teachers", () =>
 // Breadcrumbs for navigation
 const breadcrumbs = [
   { name: "Home ", link: "/" },
-  { name: " Our teachers", link: "/teachers" },
+  { name: " Our teachers" },
 ];
 </script>
 

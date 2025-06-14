@@ -36,7 +36,7 @@ import CenterCard from '~/components/CenterCard.vue'
 
 const breadcrumbs = [
   { name: 'Home ', link: '/' },
-  { name: ' Contact us', link: '/contact' }
+  { name: ' Contact us' }
 ];
 </script>
 

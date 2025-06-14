@@ -31,7 +31,7 @@
 // Breadcrumbs for navigation
 const breadcrumbs = [
   { name: 'Home ', link: '/' },
-  { name: ' About us', link: '/about' }
+  { name: ' About us' }
 ];
 </script>
 

@@ -16,7 +16,7 @@
     <!-- Activity buttons for classes and seminars -->
     <div class="activity-buttons-row">
       <!-- Link to classes page -->
-      <NuxtLink to="/activities/classes">
+      <NuxtLink to="/activities/classes" style="text-decoration: none">
         <div
           class="activity-image-btn"
           style="
@@ -45,7 +45,7 @@
 // Breadcrumbs for navigation
 const breadcrumbs = [
   { name: "Home ", link: "/" },
-  { name: " Activities", link: "/activities" },
+  { name: " Activities" },
 ];
 </script>
 
