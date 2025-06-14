@@ -46,14 +46,14 @@
     />
 
     <!-- Teacher(s) and date/time info -->
-    <div v-if="teachers && teachers.length && seminar" class="info-row">
-      <WhoCard
-        v-if="teachers && teachers.length"
-        :teachers="teachers"
+    <div v-if="responsibilities && responsibilities.length && seminar" class="info-row">
+      <ResponsibilityCard
+        v-if="responsibilities && responsibilities.length"
+        :responsibilities="responsibilities"
         :fromActivity="seminar?.name"
         :fromActivityType="'seminar'"
       />
-      <WhenCard :date="seminar.when" :time="seminar.time" />
+      <ShortTextCard :primaryText="seminar.when" :secondaryText="seminar.time" />
     </div>
   </div>
 </template>
@@ -63,8 +63,8 @@
 import { useAsyncData, useRoute } from "nuxt/app";
 import { computed } from "vue";
 import DescriptionCard from "~/components/DescriptionCard.vue";
-import WhoCard from "~/components/WhoCard.vue";
-import WhenCard from "~/components/WhenCard.vue";
+import ResponsibilityCard from "~/components/ResponsibilityCard.vue";
+import ShortTextCard from "~/components/ShortTextCard.vue";
 
 // Current route info
 const route = useRoute();
@@ -83,8 +83,8 @@ const seminar = computed(() =>
   seminarArr.value && seminarArr.value.length ? seminarArr.value[0] : null
 );
 
-// Fetch teachers connected to this seminar using the seminar name
-const { data: teachers } = await useAsyncData("teachersForSeminar", () =>
+// Fetch responsibilities connected to this seminar using the seminar name
+const { data: responsibilities } = await useAsyncData("teachersForSeminar", () =>
   seminar.value && seminar.value.name
     ? $fetch("/api/teacher/byActivity", {
         params: { name: seminar.value.name },

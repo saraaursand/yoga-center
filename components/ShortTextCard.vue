@@ -1,9 +1,9 @@
 <template>
   <div class="info-card">
     <div class="info-header">{{ header || "WHEN" }}</div>
-    <div class="info-content when-content">
-      <div class="when-date">{{ date }}</div>
-      <div class="when-time">{{ time }}</div>
+    <div class="info-content text-content">
+      <div class="text-primary">{{ primaryText }}</div>
+      <div class="text-secondary">{{ secondaryText }}</div>
     </div>
   </div>
 </template>
@@ -14,8 +14,8 @@ defineProps({
     type: String,
     default: "WHEN",
   },
-  date: String,
-  time: String,
+  primaryText: String,
+  secondaryText: String,
 });
 </script>
 
@@ -49,7 +49,7 @@ defineProps({
   letter-spacing: 1px;
 }
 
-.info-content.when-content {
+.info-content.text-content {
   background: var(--C02, #84a181);
   color: var(--C06, #000);
   font-size: var(--DESCRIPTION, 24px);
@@ -63,13 +63,13 @@ defineProps({
   flex: 1;
 }
 
-.when-date {
+.text-primary {
   font-size: var(--DESCRIPTION, 24px);
   margin-bottom: 1rem;
   text-align: center;
 }
 
-.when-time {
+.text-secondary {
   font-size: var(--DESCRIPTION, 24px);
   text-align: center;
 }

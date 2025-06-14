@@ -36,14 +36,17 @@
     />
     
     <!-- Teacher(s) and date/time info -->
-    <div v-if="teachers && teachers.length && classItem" class="info-row">
-      <WhoCard
-        v-if="teachers && teachers.length"
-        :teachers="teachers"
+    <div v-if="responsibilities && responsibilities.length && classItem" class="info-row">
+      <ResponsibilityCard
+        v-if="responsibilities && responsibilities.length"
+        :responsibilities="responsibilities"
         :fromActivity="classItem?.name"
         :fromActivityType="'class'"
       />
-      <WhenCard :date="classItem.when" :time="classItem.time" />
+      <ShortTextCard 
+        :primaryText="classItem.primaryText" 
+        :secondaryText="classItem.secondaryText" 
+      />
     </div>
   </div>
 </template>
@@ -52,8 +55,8 @@
 import { useAsyncData, useRoute } from "nuxt/app";
 import { computed } from "vue";
 import DescriptionCard from "~/components/DescriptionCard.vue";
-import WhoCard from "~/components/WhoCard.vue";
-import WhenCard from "~/components/WhenCard.vue";
+import ResponsibilityCard from "~/components/ResponsibilityCard.vue";
+import ShortTextCard from "~/components/ShortTextCard.vue";
 
 const route = useRoute();
 
@@ -74,8 +77,8 @@ const classItem = computed(() =>
   classArr.value && classArr.value.length ? classArr.value[0] : null
 );
 
-// Fetch teachers for this class using the class name
-const { data: teachers } = await useAsyncData("teachersForClass", () =>
+// Fetch responsibilities for this class using the class name
+const { data: responsibilities } = await useAsyncData("teachersForClass", () =>
   classItem.value && classItem.value.name
     ? $fetch("/api/teacher/byActivity", {
         params: { name: classItem.value.name },

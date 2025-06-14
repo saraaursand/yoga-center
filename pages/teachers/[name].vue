@@ -24,8 +24,8 @@
     />
     <DescriptionCard v-if="teacher" header="CV" :description="teacher.CV" />
     <div v-if="activities && activities.length && teacher" class="info-row">
-      <WhoCard :teachers="activities" linkType="activity" header="ACTIVITIES" />
-      <WhenCard header="ABOUT" :date="teacher.about" :time="''" />
+      <ResponsibilityCard :responsibilities="activities" linkType="activity" header="ACTIVITIES" />
+      <ShortTextCard header="ABOUT" :primaryText="teacher.about" :secondaryText="''" />
     </div>
   </div>
 </template>
@@ -34,8 +34,8 @@
 import { useAsyncData, useRoute } from "nuxt/app";
 import { computed } from "vue";
 import DescriptionCard from "~/components/DescriptionCard.vue";
-import WhoCard from "~/components/WhoCard.vue";
-import WhenCard from "~/components/WhenCard.vue";
+import ResponsibilityCard from "~/components/ResponsibilityCard.vue";
+import ShortTextCard from "~/components/ShortTextCard.vue";
 
 const route = useRoute();
 

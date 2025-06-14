@@ -1,16 +1,16 @@
 <template>
   <div class="info-card">
     <div class="info-header">{{ header || "WHO" }}</div>
-    <div class="info-content who-content">
-      <div class="who-list">
+    <div class="info-content responsibility-content">
+      <div class="responsibility-list">
         <NuxtLink
-          v-for="item in teachers"
+          v-for="item in responsibilities"
           :key="item.id"
           :to="getLink(item)"
-          class="who-item"
+          class="responsibility-item"
         >
-          <img :src="item.pic" alt="Person" class="who-img" />
-          <div class="who-name">{{ item.name }}</div>
+          <img :src="item.pic" alt="Person" class="responsibility-img" />
+          <div class="responsibility-name">{{ item.name }}</div>
         </NuxtLink>
       </div>
     </div>
@@ -19,7 +19,7 @@
 
 <script setup>
 const props = defineProps({
-  teachers: {
+  responsibilities: {
     type: Array,
     required: true,
     default: () => [],
@@ -97,7 +97,7 @@ function getLink(item) {
   letter-spacing: 1px;
 }
 
-.info-content.who-content {
+.info-content.responsibility-content {
   background: var(--C02, #84a181);
   color: var(--C06, #000);
   font-size: var(--DESCRIPTION, 24px);
@@ -111,7 +111,7 @@ function getLink(item) {
   flex: 1;
 }
 
-.who-list {
+.responsibility-list {
   display: flex;
   flex-direction: row;
   gap: 1.5rem;
@@ -120,7 +120,7 @@ function getLink(item) {
   align-items: flex-start;
 }
 
-.who-item {
+.responsibility-item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -130,11 +130,11 @@ function getLink(item) {
   transition: transform 0.1s;
 }
 
-.who-item:hover {
+.responsibility-item:hover {
   transform: scale(1.04);
 }
 
-.who-img {
+.responsibility-img {
   width: 300px;
   height: 200px;
   object-fit: cover;
@@ -143,7 +143,7 @@ function getLink(item) {
   background: #fff;
 }
 
-.who-name {
+.responsibility-name {
   font-size: var(--DESCRIPTION, 24px);
   margin-top: 0.5rem;
   text-align: center;
